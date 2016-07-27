@@ -1,0 +1,54 @@
+﻿{
+  "data": [
+    {
+      "DT_RowId": "1",
+      "maSp": "0421004",
+      "tenSanPham": "Thịt bò thăn 0.5kg",
+      "danhMuc": "Thịt bò",
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "pack",
+      "giaBan": "320800",
+      "ghiChu": ""
+    },
+    {
+      "maSp": "0123003",
+      "tenSanPham": "Rau muống",
+      "danhMuc": "Rau",
+      "soLuong": "10",
+      "donVi": "mớ",
+      "giaBan": "320800",
+      "ghiChu": ""
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0206008",
+      "tenSanPham": "Chim sẻ",
+      "danhMuc": "TP tươi sống",
+      "soLuong": "15",
+      "donVi": "con",
+      "giaBan": "320800",
+      "ghiChu": ""
+    },
+    {
+      "DT_RowId": "3",
+      "maSp": "0306008",
+      "tenSanPham": "Đu đủ",
+      "danhMuc": "Hoa quả",
+      "soLuong": "20",
+      "donVi": "quả",
+      "giaBan": "10000",
+      "ghiChu": ""
+    },
+    {
+      "DT_RowId": "4",
+      "maSp": "0406008",
+      "tenSanPham": "Gà",
+      "danhMuc": "TP tươi sống",
+      "soLuong": "5",
+      "donVi": "con",
+      "giaBan": "120000",
+      "ghiChu": ""
+    }
+  ]
+}

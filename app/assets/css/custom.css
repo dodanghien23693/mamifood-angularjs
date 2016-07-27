@@ -1,0 +1,58 @@
+.filter{
+    position: relative;
+    bottom: 5px;
+}
+
+
+.align-left{
+    padding-left:0px !important;
+    padding-right: 0px !important;
+}
+
+.float-left{
+    float:left;
+    
+}
+.dataTables_length{
+    display:inline-block;
+}
+.dataTables_info{
+    display:inline-block;
+    margin-left:30px;
+}
+
+.inline{
+    //display:inline;
+}
+
+
+/*.filter .form-group{
+    display:inline-block;
+    //width:300px;
+}*/
+
+/*.filter input,.filter select{
+    display:inline-block !important;
+    clear:both;
+    float:none !important;
+}*/
+
+
+@media (min-width: 768px) {
+    .action-region
+    .col-sm-1,.action-region .col-sm-2,.action-region .col-sm-3,.action-region .col-sm-4,.action-region .col-sm-5,.action-region .col-sm-6,.action-region .col-sm-7,.action-region .col-sm-8,.action-region .col-sm-9,.action-region .col-sm-10,.action-region .col-sm-11,.action-region .col-sm-12 {
+        float:none;
+        display:inline;
+    }
+}
+
+.action-region .form-control{
+    display:inline;
+    width:auto;
+}
+
+.header-region .form-group label, .filter .form-group label{
+    text-align:right;
+    padding-top:5px;
+}
+

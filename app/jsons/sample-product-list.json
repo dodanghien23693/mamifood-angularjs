@@ -1,0 +1,193 @@
+﻿{
+  "data": [
+    {
+      "DT_RowId": "1",
+      "maSp": "0207500",
+      "tenSanPham": "Thịt bò thăn 0.5kg",
+      "danhMuc": "Thịt bò",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "pack",
+      "giaBan": "320800",
+      "details": [
+        {
+          "soLuong": 2,
+          "klTt": "0.5kg",
+          "hsd": "20/7/2016"
+        },
+        {
+          "soLuong": 10,
+          "klTt": "0.48kg",
+          "hsd": "23/7/2016"
+        }
+      ]
+    },
+    {
+      "DT_RowId": "1",
+      "maSp": "0207500",
+      "tenSanPham": "Thịt bò thăn 0.5kg",
+      "danhMuc": "Thịt bò",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "pack",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "1",
+      "maSp": "0207500",
+      "tenSanPham": "Thịt bò thăn 0.5kg",
+      "danhMuc": "Thịt bò",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "pack",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0207500",
+      "tenSanPham": "Rau muống",
+      "danhMuc": "Rau muống",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "mớ",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0207500",
+      "tenSanPham": "Rau muống",
+      "danhMuc": "Rau",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "mớ",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0306500",
+      "tenSanPham": "Dưa hấu loại to",
+      "danhMuc": "Hoa quả",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "11",
+      "donVi": "quả",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0207500",
+      "tenSanPham": "Rau muống",
+      "danhMuc": "Rau",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "mớ",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0306500",
+      "tenSanPham": "Dưa hấu loại to",
+      "danhMuc": "Hoa quả",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "11",
+      "donVi": "quả",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0207500",
+      "tenSanPham": "Rau muống",
+      "danhMuc": "Rau",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "mớ",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0306500",
+      "tenSanPham": "Dưa hấu loại to",
+      "danhMuc": "Hoa quả",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "11",
+      "donVi": "quả",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0207500",
+      "tenSanPham": "Rau muống",
+      "danhMuc": "Rau",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "mớ",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0306500",
+      "tenSanPham": "Dưa hấu loại to",
+      "danhMuc": "Hoa quả",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "11",
+      "donVi": "quả",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0207500",
+      "tenSanPham": "Rau muống",
+      "danhMuc": "Rau",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "mớ",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0306500",
+      "tenSanPham": "Dưa hấu loại to",
+      "danhMuc": "Hoa quả",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "11",
+      "donVi": "quả",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0207500",
+      "tenSanPham": "Rau muống",
+      "danhMuc": "Rau",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "10",
+      "donVi": "mớ",
+      "giaBan": "320800"
+    },
+    {
+      "DT_RowId": "2",
+      "maSp": "0306500",
+      "tenSanPham": "Dưa hấu loại to",
+      "danhMuc": "Hoa quả",
+      "hienThi": true,
+      "trangThai": "Còn hàng",
+      "soLuong": "11",
+      "donVi": "quả",
+      "giaBan": "320800"
+    }
+
+  ]
+}

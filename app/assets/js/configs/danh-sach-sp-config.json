@@ -1,0 +1,94 @@
+﻿{
+  "tableContainer": "#danh-sach-sp",
+  "editorConfig": {
+    "ajax": "/jsons/sample-product-list.json",
+    "table": "#danh-sach-sp table",
+    "idSrc": "maSp",
+    "fields": [
+      {
+        "label": "Mã sản phẩm",
+        "name": "maSp"
+      },
+      {
+        "label": "Tên sản phẩm",
+        "name": "tenSanPham"
+      },
+      {
+        "label": "Danh mục",
+        "name": "danhMuc",
+        "type": "select",
+        "options": [ "TP tươi sống", "Gia vị", "TP chế biến", "Đồ uống", "Đồ ăn vặt", "Dụng cụ nhà bếp" ]
+      },
+      {
+        "label": "Hiển thị",
+        "name": "hienThi",
+        "type": "select",
+        "options": [ "Hiển thị", "Ẩn" ]
+      },
+      {
+        "label": "Trạng thái",
+        "name": "trangThai",
+        "type": "select",
+        "options": [ "Còn hàng", "Hết hàng" ]
+      },
+      {
+        "label": "Số lượng",
+        "name": "soLuong"
+      },
+      {
+        "label": "Đơn vị",
+        "name": "donVi"
+      },
+      {
+        "label": "Giá bán",
+        "name": "giaBan"
+      }
+    ]
+  },
+  "datatableConfig": {
+    "dom": "frtlip",
+    "serverSide": true,
+    "processing": true,
+    "lengthMenu": [
+      [ 5, 10, 25, 50 ],
+      [ 5, 10, 25, 50 ]
+    ],
+    "language": { "url": "/assets/js/plugins/datatables/Languages/vietnamese.json" },
+    "columns": [
+      {
+        "data": null,
+        "defaultContent": "",
+        "className": "select-checkbox",
+        "orderable": true
+      },
+      { "data": "maSp" },
+      { "data": "tenSanPham" },
+      { "data": "danhMuc" },
+      { "data": "hienThi" },
+      { "data": "trangThai" },
+      { "data": "soLuong" },
+      { "data": "donVi" },
+      { "data": "giaBan" },
+      {
+        "data": null,
+        "defaultContent": "chi tiết"
+      }
+    ],
+    "select": {
+      "style": "multi",
+      "selector": "td:first-child"
+    }
+  },
+  "actions": {
+    "edit": { "title": "Cập nhật thông tin sản phẩm" },
+    "remove": {
+      "confirmText": "Bạn có chắc chắn muốn xóa sản phẩm này?",
+      "title": "",
+      "url": ""
+    },
+    "create": {
+      "url": "",
+      "title": ""
+    }
+  }
+}

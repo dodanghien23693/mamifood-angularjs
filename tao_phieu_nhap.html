@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+
+<html class="no-focus">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>OneUI - shared on themelock.com</title>
+
+   
+    
+
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+    <!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    
+    <link rel="shortcut icon" href="assets/img/favicons/favicon.png">
+
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-192x192.png" sizes="192x192">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
+    <!-- END Icons -->
+    <!-- Stylesheets -->
+    <!-- Web fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+
+    <!-- Page JS Plugins CSS -->
+
+
+
+    <link href="assets/js/plugins/datatables/DataTables-1.10.12/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="assets/js/plugins/datatables/Buttons-1.2.1/css/buttons.bootstrap.css" rel="stylesheet" />
+    <link href="assets/js/plugins/datatables/Select-1.2.0/css/select.bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/js/plugins/editor-1.5.6/css/editor.bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/js/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="assets/js/plugins/select2/select2-bootstrap.css">
+    <!--end dataable-->
+
+    <!-- OneUI CSS framework -->
+    <link rel="stylesheet" id="css-main" href="assets/css/oneui.css">
+    <link href="assets/js/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="assets/css/custom.css" rel="stylesheet" />
+
+
+    <div w3-include-html="views/_includes/_head.html"></div>
+    <div w3-include-html="views/_includes/_head-datatable.html"></div>
+
+
+    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+    <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
+    <!-- END Stylesheets -->
+</head>
+<body>
+
+    <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+
+        <!-- Side Overlay-->
+            <div w3-include-html="views/_includes/_side-overlay.html"></div>
+        <!-- END Side Overlay -->
+        
+        <!-- Sidebar -->
+             <div w3-include-html="views/_includes/_sidebar.html"></div>
+        <!-- END Sidebar -->
+
+        <!-- Header -->
+            <div w3-include-html="views/_includes/_header.html"></div>
+        <!-- END Header -->
+
+        <!-- Main Container -->
+            <main id="main-container">
+            <!-- Page Header -->
+            <div class="content bg-gray-lighter">
+                <div class="row items-push">
+                    <div class="col-sm-7">
+                        <h1 class="page-heading">
+                            DataTables <small>Tables transformed with dynamic features. Powered by DataTables.</small>
+                        </h1>
+                    </div>
+                    <div class="col-sm-5 text-right hidden-xs">
+                        <ol class="breadcrumb push-10-t">
+                            <li>Tables</li>
+                            <li><a class="link-effect" href="">DataTables</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- END Page Header -->
+            <!-- Page Content -->
+            <div class="content">
+
+                <!-- Dynamic Table Full -->
+                <div class="block">
+                    <div class="block-header">
+                        <h3 class="block-title">Danh sách sản phẩm</h3>
+                    </div>
+                   
+                    <div class="block-content" id="tao-phieu-nhap">
+
+                        <div class="header-region">
+                       
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Trạng thái</label>
+
+                                    <div class="col-sm-2">
+                                        <input class="form-control" type="text" value="mới" readonly />
+                                        <!--<label class="label label-info">Mới</label>-->
+                                    </div>
+
+                                    <div class="col-sm-8 text-right">
+                                        <button class="btn">Gửi đơn hàng</button>
+                                        <button class="btn">In</button>
+                                        <button class="btn">Lưu</button>
+                                    </div>
+                                </div>
+                                   
+                            </div>
+                   
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Ghi chú</label>
+                                    <div class="col-sm-10">
+                                        <textarea  class="form-control">Ghi chú</textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Số phiếu</label>
+                                    <div class="col-sm-2">
+                                        <input class="form-control" type="text" readonly />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Ngày tạo</label>
+                                    <div class="col-sm-2">
+                                        <input class="form-control" type="text" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Người tạo</label>
+                                    <div class="col-sm-2">
+                                        <input class="form-control" type="text" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Kho mini</label>
+                                    <div class="col-sm-2">
+                                        <select class="form-control">
+                                            <option>Chọn kho mini</option>
+                                            <option>Kho 1</option>
+                                            <option>Kho 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Nhà cung cấp</label>
+                                    <div class="col-sm-2">
+                                        <select class="form-control">
+                                            <option>Chọn NCC</option>
+                                            <option>Kho 1</option>
+                                            <option>Kho 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Ngày mong muốn</label>
+                                    <div class="col-sm-2">
+                                        <input class="form-control" type="date" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div  class="filter-region filter form-horizontal">
+
+                               
+                        </div>
+                        
+                        <table class="table table-bordered table-striped js-dataTable-tao-phieu-nhap">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>STT</th>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn vị</th>
+                                    <th>Ghi chú</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        
+                        <div class="action-region">
+                            <div class="form-group">
+                                <div class="col-sm-2 align-left">
+                                    <select class="form-control action-list">
+                                        <option value="1">Sửa</option>
+                                        <option value="2">Xóa</option>
+                                        
+                                    </select>
+                                </div>
+                                <button class="btn  btn-info">Thực hiện</button>
+                                <button class="btn btn-success">Thêm sản phẩm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Dynamic Table Full -->
+     
+            </div>
+            <!-- END Page Content -->
+        </main>
+        <!-- END Main Container -->
+        <!-- Footer -->
+        <link rel="import" href="views/_includes/_footer.html">
+           <!-- <div w3-include-html="views/_includes/_footer.html"></div>-->
+        <!-- END Footer -->
+    </div>
+    <!-- END Page Container -->
+
+    <!-- Apps Modal -->
+    <!-- Opens from the button in the header -->
+    <div class="modal fade" id="apps-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-sm modal-dialog modal-dialog-top">
+            <div class="modal-content">
+                <!-- Apps Block -->
+                <div class="block block-themed block-transparent">
+                    <div class="block-header bg-primary-dark">
+                        <ul class="block-options">
+                            <li>
+                                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">Apps</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="row text-center">
+                            <div class="col-xs-6">
+                                <a class="block block-rounded" href="index.html">
+                                    <div class="block-content text-white bg-default">
+                                        <i class="si si-speedometer fa-2x"></i>
+                                        <div class="font-w600 push-15-t push-15">Backend</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a class="block block-rounded" href="frontend_home.html">
+                                    <div class="block-content text-white bg-modern">
+                                        <i class="si si-rocket fa-2x"></i>
+                                        <div class="font-w600 push-15-t push-15">Frontend</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Apps Block -->
+            </div>
+        </div>
+    </div>
+    <!-- END Apps Modal -->
+
+    
+    <!--Core js-->
+
+    <script src="assets/js/core/jquery.min.js"></script>
+    
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/core/jquery.slimscroll.min.js"></script>
+    <script src="assets/js/core/jquery.scrollLock.min.js"></script>
+    <script src="assets/js/core/jquery.appear.min.js"></script>
+    <script src="assets/js/core/jquery.countTo.min.js"></script>
+    <script src="assets/js/core/jquery.placeholder.min.js"></script>
+    <script src="assets/js/core/js.cookie.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!--end core js-->
+    <!--datatable js-->
+
+    <script src="assets/js/plugins/datatables/DataTables-1.10.12/js/jquery.dataTables.js"></script>
+
+    <script src="assets/js/plugins/datatables/DataTables-1.10.12/js/dataTables.bootstrap.js"></script>
+    <script src="assets/js/plugins/editor-1.5.6/js/dataTables.editor.js"></script>
+
+    <script src="assets/js/plugins/editor-1.5.6/js/editor.bootstrap.js"></script>
+
+    <script src="assets/js/plugins/datatables/Buttons-1.2.1/js/dataTables.buttons.js"></script>
+    <script src="assets/js/plugins/datatables/Select-1.2.0/js/dataTables.select.js"></script>
+
+    <script src="assets/js/plugins/select2/select2.full.min.js"></script>
+
+    <script src="assets/js/siten-datatable.js"></script>
+
+    <!--end datatable js-->
+
+    <!-- Page JS Code -->
+    <!--<script src="assets/js/pages/tao_phieu_nhap.js"></script>-->
+
+    <script>
+       
+       
+        w3IncludeHTML();
+
+
+        //$(function () { BaseTableDatatables.init(); });
+        $(function () {
+            
+
+
+
+
+            var config = {
+                tableContainer: "#tao-phieu-nhap",
+                editorConfig: {
+                    ajax: "/jsons/ds-hanghoa-trong-phieu-nhap.json",
+                    table: "#tao-phieu-nhap .js-dataTable-tao-phieu-nhap",
+                    fields: [
+                        {
+                            label: "Mã sản phẩm",
+                            name: "maSp",
+                            type: "readonly"
+                        }, {
+                            label: "Tên sản phẩm",
+                            name: "tenSanPham",
+                            type: "readonly"
+                        }, {
+                            label: "Số lượng",
+                            name: "soLuong"
+                        }, {
+                            label: "Đơn vị",
+                            name: "donVi",
+                            type: "readonly"
+                        }, {
+                            label: "Ghi chú",
+                            name: "ghiChu",
+                            type: "textarea"
+                        }
+                    ]
+                },
+
+                datatableConfig: {
+                    dom: "frtlp",
+                    paging: false,
+                    ajax: "/jsons/ds-hanghoa-trong-phieu-nhap.json",
+
+                    //lengthMenu: [[5, 10, 25, 50], [5, 10, 25, 50]],
+                    language: {
+                        "url": "/assets/js/plugins/datatables/Languages/vietnamese.json"
+                    },
+                    columns: [
+                        {
+                            data: null,
+                            defaultContent: '',
+                            className: 'select-checkbox',
+                            orderable: false
+                        },
+                        {
+                            data: null,
+                            defaultContent: '-1',
+                            render: function (data, type, full, meta) {
+                                return meta.row + 1;
+                            }
+                        },
+                        { data: "maSp" },
+                        { data: "tenSanPham" },
+                        { data: "soLuong" },
+                        { data: "donVi" },
+                        { data: "ghiChu" }
+                    ]
+                    ,
+                    select: {
+                        style: 'multi',
+                        selector: 'td:first-child'
+                    }
+                },
+
+                actions: {
+                    edit: {
+                        title: 'Cập nhật thông tin sản phẩm',
+                        method: function (table) {
+                            var selected = table.rows({ selected: true });
+                            var selectedItems = selected.data();
+                            if (selectedItems.length > 0) {
+
+                                table.row(selected.nodes()[0]).edit({ title: 'Cập nhật thông tin sản phẩm' });
+                            }
+                            else {
+
+                            }
+                        }
+                    },
+                    remove: {
+                        confirmText: 'Bạn có chắc chắn muốn xóa sản phẩm này?',
+                        title: '',
+
+                        url: '',
+                        method: function (table) {
+                            var selectedItems = table.rows({ selected: true }).data();
+
+                            var ids = [];
+                            for (var i = 0; i < selectedItems.length; i++) {
+
+                                ids.push(selectedItems[i].id);
+                            }
+
+                            $.ajax({
+                                url: "http://mamifood.dev/products/delete",
+                                type: "GET",
+                                dataType: 'json',
+                                data: { ids: ids.join(',') },
+                                crossDomain: true,
+                                success: function (resp) {
+                                    swal("Đã xóa!", "Sản phẩm đã xóa thành công", "success");
+                                    table.rows(table.rows({ selected: true }).nodes()).remove().draw();
+                                }.bind(this),
+                                error: function (resp) {
+                                    swal("Lỗi!", "Có lỗi xảy ra", "error");
+                                }
+                            });
+                        }
+
+                    },
+                    create: {
+                        url: '',
+                        title: '',
+                        method: function (table) {
+                            table.row.create();
+                        }
+                    }
+                }
+            };
+
+            var table = BaseTableDatatables(
+                    config
+            );
+
+            window.setTimeout(function () {
+                table.init();
+            }.bind(this), 1000);
+
+
+
+                // Init page helpers (BS Datepicker + BS Colorpicker + Select2 + Masked Input + Tags Inputs plugins)
+                //App.initHelpers(['select2']);
+            });
+    </script>
+    
+</body>
+</html>
