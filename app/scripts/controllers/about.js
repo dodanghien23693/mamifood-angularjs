@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the angularClientApp
  */
-angular.module('angularClientApp')
+angular.module('mamifood')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

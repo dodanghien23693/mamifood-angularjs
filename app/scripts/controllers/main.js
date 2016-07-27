@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the angularClientApp
  */
-angular.module('angularClientApp')
+angular.module('mamifood')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

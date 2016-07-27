@@ -13,9 +13,10 @@ var BaseTableDatatables = function (config) {
     
     var initProductList = function (tableSelector) {
         
-        editor = new $.fn.dataTable.Editor(config.editorConfig);
-
-
+        if (config.editorConfig != undefined) {
+            editor = new $.fn.dataTable.Editor(config.editorConfig);
+        }
+        
         // Activate an inline edit on click of a table cell
         //$('.js-dataTable-danh-sach-sp').on('click', 'tbody td:not(:first-child)', function (e) {
         //    editor.inline(this);
@@ -137,26 +138,7 @@ var BaseTableDatatables = function (config) {
                 showLoaderOnConfirm: true,
             },
             function () {
-                
-                
-             
-                action.method(table);
-              
-                //$.ajax({
-                //    url: "http://mamifood.dev/products/delete",
-                //    type: "GET",
-                //    dataType: 'json',
-                //    data: { ids: ids.join(',') },
-                //    crossDomain: true,
-                //    success: function (resp) {                        
-                //        swal("Đã xóa!", "Sản phẩm đã xóa thành công", "success");
-                //        table.rows(table.rows({ selected: true }).nodes()).remove().draw();
-                //    }.bind(this),
-                //    error:function(resp){
-                //        swal("Lỗi!", "Có lỗi xảy ra", "error");
-                //    }
-                //});
-                
+                action.method(table);              
             });
         }
         
@@ -334,7 +316,7 @@ var BaseTableDatatables = function (config) {
 
         $(config.tableContainer+" .action-list").change(function () {
             var actionCode = getCurrentActionCode();
-            if (actionCode == "1") {
+            if (actionCode == "edit") {
                 table.settings()[0]._select.style = "single";
                 //table.draw();
             }
@@ -345,19 +327,24 @@ var BaseTableDatatables = function (config) {
         });
 
 
-        $(config.tableContainer+" .do-action").click(function () {
-            var actionCode = $(config.tableContainer+" .action-region .action-list").val();
-            switch (actionCode) {
-                case "1":
-                    editItem(table, editor,config.actions.edit);
-
-                    break;
-                case "2":
-                    removeItems(table,config.actions.remove);
-                    break;
-                case "0":
-                    taoHoaDown(table,config.actions.create);
+        $(config.tableContainer + " .do-action").click(function () {
+            var actionCode = $(config.tableContainer + " .action-region .action-list").val();
+            if (config.actions[actionCode] != undefined) {
+                
+                config.actions[actionCode].method(table);
             }
+
+            //switch (action) {
+            //    case "edit":
+            //        editItem(table, editor,config.actions.edit);
+            //        break;
+            //    case "remove":
+            //        removeItems(table,config.actions.remove);
+            //        break;
+            //    case "taoHoaDon":
+            //        taoHoaDown(table,config.actions.create);
+            //}
+
         });  
         
         $("#danh-sach-sp .add-new").click(function () {
@@ -377,13 +364,10 @@ var BaseTableDatatables = function (config) {
     }
 
     return {
-        //tableContainer: tableContainer,
         init: function () {
-            //bsDataTables();
+            bsDataTables();
             var table = initProductList(config.tableContainer + " table");
-            
-            //'.js-dataTable-danh-sach-sp');
-
+           
             initActions(table, editor,config);
             initFilters(config, table);
         },
