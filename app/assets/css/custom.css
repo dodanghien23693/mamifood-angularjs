@@ -56,3 +56,10 @@
     padding-top:5px;
 }
 
+table  .responsive{
+    width:100% !important;
+}
+
+.table>thead>tr>th{
+    text-transform:none;
+}

@@ -141,7 +141,8 @@
                                     </select>
                                 </div>
                                 <button class="btn  btn-info do-action">Thực hiện</button>
-                                <button class="btn btn-success">Thêm sản phẩm</button>
+                                <button class="btn btn-success" data-toggle="modal" data-target="#modal-large">Thêm sản phẩm</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -152,7 +153,33 @@
             <!-- END Page Content -->
 
 
-
+<!-- Large Modal -->
+<div class="modal" id="modal-large" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+         
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header bg-primary-dark">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Danh sách sản phẩm</h3>
+                </div>
+                <div class="block-content">
+                    <iframe src="/views/chon-san-pham.html" width="100%" height="420" style="border:0"></iframe>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <!--<button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Đóng</button>-->
+                <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" onClick="addProducts()">Thêm sản phẩm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Large Modal -->
 
 <script>
        
@@ -313,5 +340,12 @@
             }.bind(this), 500);
                 // Init page helpers (BS Datepicker + BS Colorpicker + Select2 + Masked Input + Tags Inputs plugins)
                 //App.initHelpers(['select2']);
-            });
+        });
+
+        function addProducts() {
+
+            //alert(JSON.stringify());
+            var items = window.frames[0].frameElement.contentWindow.getSelectedRows();
+            swal("", "Đã thêm "+items.length+" sản phẩm thành công!", "success");
+        }
     </script>

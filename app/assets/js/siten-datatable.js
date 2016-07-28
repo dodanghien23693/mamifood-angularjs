@@ -26,6 +26,8 @@ var BaseTableDatatables = function (config) {
             config.datatableConfig
         );
 
+        $(tableSelector).css("width", "100%" );
+
         $("table").delegate(".detail-table-container .detail-button", 'click', function () {
            
             var e = $(this).parent();
@@ -364,12 +366,15 @@ var BaseTableDatatables = function (config) {
     }
 
     return {
+        
         init: function () {
             bsDataTables();
             var table = initProductList(config.tableContainer + " table");
            
             initActions(table, editor,config);
             initFilters(config, table);
+
+            return table;
         },
         
             
