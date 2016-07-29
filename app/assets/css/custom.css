@@ -63,3 +63,7 @@ table  .responsive{
 .table>thead>tr>th{
     text-transform:none;
 }
+
+.header-content{
+    padding-top:20px;
+}

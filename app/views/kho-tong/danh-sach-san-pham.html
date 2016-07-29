@@ -119,7 +119,7 @@
 
 
     <script>
-        		$(function () {
+        $(function () {
             var config =
              {
                  tableContainer: "#danh-sach-sp",
@@ -201,8 +201,7 @@
                              callback(data);
                          }.bind(this))
                          .fail(function (xhr, textStatus, errorThrown) {
-                             alert(xhr.responseText);
-                             alert(textStatus);
+                             swal("Lỗi load dữ liệu", textStatus + ":" + xhr.responseText, 'error');
                          });
 
                      },
@@ -224,7 +223,6 @@
                          {
                              data: "hienThi",
                              render: function (data, type, full, meta) {
-
                                  return '<input disabled type="checkbox"' + ((data) ? 'checked' : '') + '>';
                              }
                          },
@@ -234,12 +232,14 @@
                          { data: "giaBan" },
                          {
                              data: null, defaultContent: 'chi tiết',
-                             orderable: false
-                             //    render: function (data, type, full, meta) {
+                             orderable: false,
+                            render: function (data, type, full, meta) {
 
-                             //        return getDetailTable();
-                             //        //return '<div class="btn "><span class="si si-plus"></span></div>';
-                             //    }
+                                return '<a href="#/admin/chi-tiet-sp/' + data.maSp + '" target="_blank">Chi tiết</a>';
+
+                                //return getDetailTable();
+                                //return '<div class="btn "><span class="si si-plus"></span></div>';
+                            }
                              
                          }
                      ]

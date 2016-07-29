@@ -1,0 +1,84 @@
+﻿{
+  "id": "root",
+  "state": {
+    "opened": true,
+    "selected": true
+  },
+  "text": "Root",
+  "children": [
+    {
+      "id": "1",
+      "text": "TP tươi sống",
+      "children": [
+        {
+          "id": "10",
+          "text": "Thịt gà"
+        },
+        {
+          "id": "11",
+          "text": "Thịt lợn"
+        },
+        {
+          "id": "12",
+          "text": "Thịt bò"
+        },
+        {
+          "id": "13",
+          "text": "Thịt cừu"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "text": "TP chế biến"
+    },
+    {
+      "id": "3",
+      "text": "Gia vị"
+    },
+    {
+      "id": "4",
+      "text": "Đồ uống",
+      "children": [
+        {
+          "id": "40",
+          "text": "Bia"
+        },
+        {
+          "id": "41",
+          "text": "Rượu"
+        },
+        {
+          "id": "42",
+          "text": "Trà"
+        },
+        {
+          "id": "43",
+          "text": "Cafe"
+        },
+        {
+          "id": "44",
+          "text": "Nước ép hoa quả"
+        },
+        {
+          "id": "45",
+          "text": "Sữa"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "text": "Đồ ăn vặt",
+      "children": [
+        {
+          "id": "50",
+          "text": "Bánh kẹo"
+        },
+        {
+          "id": "51",
+          "text": "Kem"
+        }
+      ]
+    }
+  ]
+}

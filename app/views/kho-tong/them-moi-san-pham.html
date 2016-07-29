@@ -1,0 +1,329 @@
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="content content-narrow">
+    <!-- Forms Row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Bootstrap Forms Validation -->
+            <div class="block">
+                <div class="block-header">
+                    <h3 class="header-content  text-center">Thêm mới sản phẩm</h3>
+                </div>
+                <div class="block-content block-content-large">
+                    <form class="js-validation-them-moi-san-pham form-horizontal" action="" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="code">Tên sản phẩm<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="name" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="categoryId">Danh mục<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <select name="categoryId" class="form-control">
+                                            <option>
+                                                Chọn danh mục sản phẩm
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="unit">Đơn vị<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="unit" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="code">Mã sản phẩm<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="code" placeholder="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="price">Đơn giá bán<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="price" placeholder="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="">Thang đo</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" type="text" name="" placeholder="">
+                                            <option value="Khối lượng">Khối lượng</option>
+                                            <option value="Dung tích">Dung tích</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="">Khối lượng lý thuyết</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="" placeholder="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="price">Đơn vị thang đo</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="price" placeholder="" />
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-sm-6">
+
+
+                                <div class="row items-push">
+                                    <div class="col-sm-6 animated fadeIn">
+                                        <div class="img-container fx-img-zoom-in fx-opt-slide-down">
+                                            <img class="img-responsive" src="assets/img/photos/photo13.jpg" alt="">
+                                            <div class="img-options">
+                                                <div class="img-options-content">
+                                                    <h3 class="font-w400 text-white push-5">Ảnh 1</h3>
+                                                    <!--<h4 class="h6 font-w400 text-white-op push-15">Some Extra Info</h4>-->
+                                                    <a class="btn btn-sm btn-default" href="javascript:editImage(0)"><i class="fa fa-pencil"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-default" href="javascript:deleteImage(0)"><i class="fa fa-times"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 animated fadeIn">
+                                        <div class="img-container fx-img-zoom-in fx-opt-slide-down">
+                                            <img class="img-responsive" src="assets/img/photos/photo13.jpg" alt="">
+                                            <div class="img-options">
+                                                <div class="img-options-content">
+                                                    <h3 class="font-w400 text-white push-5">Ảnh 2</h3>
+                                                    <!--<h4 class="h6 font-w400 text-white-op push-15">Some Extra Info</h4>-->
+                                                    <a class="btn btn-sm btn-default" href="javascript:editImage(1)"><i class="fa fa-pencil"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-default" href="javascript:deleteImage(1)"><i class="fa fa-times"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <!-- DropzoneJS -->
+                                    <!-- For more info and examples you can check out http://www.dropzonejs.com/#usage -->
+                                    <h2 class="content-heading">Thêm ảnh</h2>
+                                    <div class="block">
+                                        <div class="block-content block-content-full">
+                                            <!-- DropzoneJS Container -->
+                                            <div class="dropzone">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END DropzoneJS -->
+                                </div>
+
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="form-group">
+                                        <label class="css-input css-checkbox css-checkbox-primary">
+                                            <input type="checkbox" name="hidden" /><span></span> Hiển thị sản phẩm
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="css-input css-checkbox css-checkbox-primary">
+                                            <input type="checkbox" name="abc" checked /><span></span> Tính tiền trên sai khác thực tế
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <button class="btn btn-sm btn-primary col-sm-1 col-sm-offset-5">Lưu</button>
+                                    <button class="btn btn-sm btn-default col-sm-1" style="margin-left:5px">Hủy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Bootstrap Forms Validation -->
+            <!-- Bootstrap Forms Validation -->
+            <div class="block">
+                <div class="block-header">
+                    <h3 class="header-content text-center">Truy vấn chi tiết sản phẩm</h3>
+                </div>
+                <div class="block-content block-content-large">
+                    <div class="filter-region filter">
+                        <div class="form-group">
+                            <label class="control-label col-sm-1">Kho</label>
+                            <div class="col-sm-2">
+                                <select name="khoId" class="js-select2 form-control" data-placeholder="Chọn kho">
+                                    <option value="-1">Tất cả</option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
+                                    <option value="1">kho 1</option>
+                                    <option value="2">Kho 2</option>
+                                    <option value="3">Kho 3</option>
+                                    <option value="4">Kho 4</option>
+                                    <option value="5">Kho 5</option>
+                                    <option value="6">Kho 6</option>
+                                    <option value="7">Kho 7</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="btn btn-info col-sm-1">Truy vấn</div>
+                        </div>
+                    </div>
+                    <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Serial</th>
+                                <th>Số lượng</th>
+                                <th>Hạn sử dụng</th>
+                                <th>Khối lượng/Dung tích</th>
+                                <th>Ngày nhập</th>
+                                <th>Phiếu nhập</th>
+                                <th>Nhà cung cấp</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="action-region">
+                        <div class="form-group">
+                            <div class="col-sm-2 align-left">
+                                <select class="form-control action-list">
+                                    <option value="huyPhieuNhap">Hủy phiếu nhập</option>
+                                </select>
+                            </div>
+                            <button class="btn  btn-info do-action">Thực hiện</button>
+                            <button class="btn btn-success action-button" action="addNew">Thêm mới</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bootstrap Forms Validation -->
+        </div>
+    </div>
+    <!-- END Forms Row -->
+
+</div>
+
+<div class="content content-narrow">
+    <!-- Forms Row -->
+    <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+    </div>
+    <!-- END Forms Row -->
+
+</div>
+<!-- Terms Modal -->
+<div class="modal fade" id="modal-terms" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popin">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header bg-primary-dark">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Terms &amp; Conditions</h3>
+                </div>
+                <div class="block-content">
+                    <h4 class="push-10">1. <strong>General</strong></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.</p>
+                    <h4 class="push-10">2. <strong>Account</strong></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.</p>
+                    <h4 class="push-10">3. <strong>Service</strong></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.</p>
+                    <h4 class="push-10">4. <strong>Payments</strong></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Terms Modal -->
+<link rel="stylesheet" href="/assets/js/plugins/dropzonejs/dropzone.min.css">
+<script src="/assets/js/plugins/dropzonejs/dropzone.min.js"></script>
+
+
+<script>
+    //App.init();
+    function editImage(id) {
+        swal("", "Thực hiển chỉnh sửa ảnh sản phẩm", "info");
+    }
+    function deleteImage(id) {
+        swal("", "Thực hiện xóa ảnh cho sản phẩm", "info");
+    }
+
+    //validation
+    $(document).ready(function () {
+
+        $(".dropzone").dropzone({ url: "/file/post" });
+
+        $('.js-validation-them-moi-san-pham').validate({
+            errorClass: 'help-block animated fadeInDown',
+            errorElement: 'div',
+            errorPlacement: function (error, e) {
+                jQuery(e).parents('.form-group > div').append(error);
+            },
+            highlight: function (e) {
+                jQuery(e).closest('.form-group').removeClass('has-error').addClass('has-error');
+                jQuery(e).closest('.help-block').remove();
+            },
+            success: function (e) {
+                jQuery(e).closest('.form-group').removeClass('has-error');
+                jQuery(e).closest('.help-block').remove();
+            },
+            rules: {
+                'name': {
+                    required: true,
+                    minlength: 3
+                },
+                'categoryId': {
+                    required: true
+                },
+                'unit': {
+                    required: true
+                },
+                'code': {
+                    required: true,
+                    minlength: 7,
+                    maxlength: 7
+                },
+                'price': {
+                    required: true
+                },
+            },
+            messages: {
+                'name': {
+                    required: 'Chưa nhập tên sản phẩm'
+                },
+                'categoryId': 'Please enter a valid email address',
+                'unit': {
+                    required: 'Chưa nhập đơn vị',
+                },
+                'code': {
+                    required: 'Vui lòng nhập mã sản phẩm',
+                    minlength: 'Mã sản phẩm cần nhập đủ 7 kỹ tự'
+                },
+                'price': 'What can we do to become better?'
+            }
+        });
+    });
+</script>

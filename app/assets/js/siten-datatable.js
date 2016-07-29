@@ -113,43 +113,42 @@ var BaseTableDatatables = function (config) {
     }
 
 
-    function editItem(table, editor, action) {
-        action.method(table);
-        
-    }
+    //function editItem(table, editor, action) {
+    //    action.method(table);
+    //}
 
-    function removeItems(table,action) {
+    //function removeItems(table,action) {
 
-        if (table.row({ selected: true }).count() == 0) {
-            swal({
-                title: "Chưa có sản phẩm nào được chọn!",
-                type: 'warning',
-                showCloseButton: true,
-            });
-        }
-        else {
-            swal({
-                title: action.confirmText,
-                text: "",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Đồng ý",
-                cancelButtonText: "Hủy",
-                closeOnConfirm: false,
-                showLoaderOnConfirm: true,
-            },
-            function () {
-                action.method(table);              
-            });
-        }
+    //    if (table.row({ selected: true }).count() == 0) {
+    //        swal({
+    //            title: "Chưa có sản phẩm nào được chọn!",
+    //            type: 'warning',
+    //            showCloseButton: true,
+    //        });
+    //    }
+    //    else {
+    //        swal({
+    //            title: action.confirmText,
+    //            text: "",
+    //            type: "warning",
+    //            showCancelButton: true,
+    //            confirmButtonColor: "#DD6B55",
+    //            confirmButtonText: "Đồng ý",
+    //            cancelButtonText: "Hủy",
+    //            closeOnConfirm: false,
+    //            showLoaderOnConfirm: true,
+    //        },
+    //        function () {
+    //            action.method(table);              
+    //        });
+    //    }
         
-    }
+    //}
 
-    function createItem(table, action) {
-        action.method(table);
+    //function createItem(table, action) {
+    //    action.method(table);
         
-    }
+    //}
 
     // DataTables Bootstrap integration
     var bsDataTables = function() {
@@ -347,11 +346,16 @@ var BaseTableDatatables = function (config) {
             //        taoHoaDown(table,config.actions.create);
             //}
 
-        });  
-        
-        $("#danh-sach-sp .add-new").click(function () {
-            createItem(table,config.actions.create);
         });
+
+        $(config.tableContainer + " .action-button").click(function (e) {
+            var actionCode = $(this).attr("action");
+            config.actions[actionCode].method(table);
+        });
+        
+        //$("#danh-sach-sp .add-new").click(function () {
+        //    createItem(table,config.actions.create);
+        //});
     }
 
     var getCurrentActionCode = function(){

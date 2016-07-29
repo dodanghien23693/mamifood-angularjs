@@ -3,8 +3,14 @@
                 <div class="row items-push">
                     <div class="col-sm-7">
                         <h1 class="page-heading">
-                            Quản lý NCC
+                            DataTables <small>Tables transformed with dynamic features. Powered by DataTables.</small>
                         </h1>
+                    </div>
+                    <div class="col-sm-5 text-right hidden-xs">
+                        <ol class="breadcrumb push-10-t">
+                            <li>Tables</li>
+                            <li><a class="link-effect" href="">DataTables</a></li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -12,21 +18,53 @@
             <!-- Page Content -->
             <div class="content">
                 <!-- Dynamic Table Full -->
-                <div class="block" id="danh-sach-ncc">
+                <div class="block" id="danh-sach-phieu-nhap">
                     <div class="block-header">
-                        <h3 class="block-title">Danh sách nhà cung cấp</h3>
+                        <h3 class="block-title">Danh sách phiếu nhập</h3>
                     </div>
 
                     <div class="block-content">
 
                         <div class="filter-region filter">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-1">Kho</label>
+                                <div class="col-sm-2">
+                                    <select name="khoId" class="js-select2 form-control" data-placeholder="Chọn kho">
+                                        <option value="-1">Tất cả</option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
+                                        <option value="1">kho 1</option>
+                                        <option value="2">Kho 2</option>
+                                        <option value="3">Kho 3</option>
+                                        <option value="4">Kho 4</option>
+                                        <option value="5">Kho 5</option>
+                                        <option value="6">Kho 6</option>
+                                        <option value="7">Kho 7</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Nhà cung cấp</label>
+                                <div class="col-sm-2">
+                                    <select name="danhMuc" class="js-select2 form-control" data-placeholder="Chọn nhà cung cấp">
+                                        <option value="-1">Tất cả</option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
+                                        <option value="Đồ ăn vặt">Đồ ăn vặt</option>
+                                        <option value="TP chế biến">TP chế biến</option>
+                                        <option value="TP tươi sống">TP tươi sống</option>
+                                        <option value="Đồ uống">Đồ uống</option>
+                                        <option value="Gia vị">Gia vị</option>
+                                        <option value="Dụng cụ nhà bếp">Dụng cụ nhà bếp</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Trạng thái</label>
                                 <div class="col-sm-2">
-                                    <select name="disabled" class="js-select2 form-control" data-placeholder="Chọn trạng thái">
+                                    <select name="trangThai" class="js-select2 form-control" data-placeholder="Chọn trạng thái">
                                         <option value="-1">Tất cả</option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
-                                        <option value="false">Hoạt động</option>
-                                        <option value="true">Đã xóa</option>
+                                        <option value="Còn hàng">Còn hàng</option>
+                                        <option value="Hết hàng">Hết hàng</option>
                                     </select>
                                 </div>
                             </div>
@@ -34,24 +72,18 @@
                         </div>
 
                         <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
-                        <table class="table table-bordered table-striped js-table-checkable">
+                        <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th class="text-center" style="width: 70px;">
-                                        <label class="css-input css-checkbox css-checkbox-primary remove-margin-t remove-margin-b">
-                                            <input type="checkbox" id="check-all" name="check-all"><span></span>
-                                        </label>
-                                    </th>
-                                    <th>Mã NCC</th>
-                                    <th>Tên NCC</th>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Kho</th>
                                     <th>Trạng thái</th>
-                                    <th>Người đại diện</th>
-                                    <th>SĐT NĐD</th>
-                                    
-                                    <th>Email</th>
-                                    <th>Địa chỉ</th>
-                                    <th></th>
+                                    <th>NCC</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Ngày duyệt</th>
+                                    <th>Ngày nhập kho</th>
+                                    <th>Thao tác</th>
                                 </tr>
                             </thead>
                         </table>
@@ -60,8 +92,7 @@
                             <div class="form-group">
                                 <div class="col-sm-2 align-left">
                                     <select class="form-control action-list">
-                                        <option value="remove">Xóa</option>
-                                        <option value="restore">Khôi phục</option>
+                                        <option value="huyPhieuNhap">Hủy phiếu nhập</option>
                                     </select>
                                 </div>
                                 <button class="btn  btn-info do-action">Thực hiện</button>
@@ -78,58 +109,60 @@
 
 
     <script>
-        	$(function () {
+        $(function () {
             var config =
              {
-                 tableContainer: "#danh-sach-ncc",
-                 editorConfig: {
-                     ajax: "/jsons/sample-product-list.json",
-                     table: "#danh-sach-ncc table",
-                     idSrc: 'maNCC',
-                     fields: [
-                         {
-                             label: "Mã NCC",
-                             name: "code"
-                         }, {
-                             label: "Tên NCC",
-                             name: "name"
-                         },
-                         //{
-                         //    label: "Trạng thái",
-                         //    name: "disabled",
-                         //    type: "select",
-                         //    options: ["Hoạt động", "Đã xóa"]
-                         //},
-                         {
-                             label: "Người đại diện",
-                             name: "nguoiDaiDien"
-                         }, {
-                             label: "SĐT người đại diện",
-                             name: "phone"
-                         },
-                         {
-                             label: "Email",
-                             name: "email"
-                         },
-                         {
-                             label: "Địa chỉ",
-                             name: "address"
-                         }
-
-                     ]
-                 },
+                 tableContainer: "#danh-sach-phieu-nhap",
+                 //editorConfig: {
+                 //    ajax: "/jsons/sample-product-list.json",
+                 //    table: "#danh-sach-sp table",
+                 //    idSrc: 'maSp',
+                 //    fields: [
+                 //        {
+                 //            label: "Mã sản phẩm",
+                 //            name: "maSp"
+                 //        }, {
+                 //            label: "Tên sản phẩm",
+                 //            name: "tenSanPham"
+                 //        }, {
+                 //            label: "Danh mục",
+                 //            name: "danhMuc",
+                 //            type: "select",
+                 //            options: (function () {
+                 //                return ["TP tươi sống", "Gia vị", "TP chế biến", "Đồ uống", "Đồ ăn vặt", "Dụng cụ nhà bếp"];
+                 //            })()
+                 //        }, {
+                 //            label: "Hiển thị",
+                 //            name: "hienThi",
+                 //            type: "select",
+                 //            options: ["Hiển thị", "Ẩn"]
+                 //        }, {
+                 //            label: "Trạng thái",
+                 //            name: "trangThai",
+                 //            type: "select",
+                 //            options: ["Còn hàng", "Hết hàng"]
+                 //        }, {
+                 //            label: "Số lượng",
+                 //            name: "soLuong"
+                 //        }, {
+                 //            label: "Đơn vị",
+                 //            name: "donVi"
+                 //        },
+                 //        {
+                 //            label: "Giá bán",
+                 //            name: "giaBan"
+                 //        }
+                 //    ]
+                 //},
 
                  datatableConfig: {
                      dom: "frtlip",
                      serverSide: true,
                      "processing": true,
-                     //"ajax":"/jsons/danh-sach-ncc.json",
                      "ajax": function (data, callback, settings) {
                          var filter = {};
                          $(config.tableContainer).find(".filter-region").find("select,input").each(function (index, item) {
-                             if ($(item).val() != '-1') {
-                                 filter[$(item).attr('name')] = $(item).val();
-                             }
+                             filter[$(item).attr('name')] = $(item).val();
                          });
 
                          var query = {
@@ -150,7 +183,7 @@
                              type: "GET",
                              dataType: 'json',
                              data: query,
-                             url: "http://mamifood.dev/api/ncc",
+                             url: "http://mamifood.dev/api/stocks",
                              crossDomain: true
                          })
                          .done(function (data) {
@@ -158,7 +191,9 @@
                              callback(data);
                          }.bind(this))
                          .fail(function (xhr, textStatus, errorThrown) {
-                             swal("Lỗi load dữ liệu", textStatus + ":" + xhr.responseText, 'error');
+                             swal("Lỗi load dữ liệu", textStatus +":"+ xhr.responseText, 'error');
+                             //alert(xhr.responseText);
+                             //alert(textStatus);
                          });
 
                      },
@@ -171,35 +206,22 @@
                              data: null,
                              defaultContent: '',
                              orderable: false,
-                             className: 'select-checkbox', 
+                             className: 'select-checkbox',
+                             
                          },
-                         { data: "code" },
-                         { data: "name" },
-                         {
-                             data: "disabled",
-                             render: function (data, type, full, meta) {
-                                 if (data == true) {
-                                     return 'Đã xóa';
-                                 }
-                                 else {
-                                     return 'Hoạt động';
-                                 }
-                                 
-                             }
-                         },
-                         { data: "nguoiDaiDien" },
-                         { data: "phone" },
-                         { data: "email" },
-                         { data: "address" },
+                         { data: "header.code" },
+                         { data: "header.stock.name" },
+                         { data: "header.status" },
+                         { data: "header.supplier.name" },
+                         { data: "header.createdTime" },
+                         { data: "header.acceptedTime" },
+                         { data: "header.enteredTime" },
                          {
                              data: null, defaultContent: 'chi tiết',
                              orderable: false,
-                             render: function (data, type, full, meta) {
-
-                                return '<a href="#/admin/chi-tiet-ncc/' + data.code + '" target="_blank">Chi tiết</a>';
-                                //return getDetailTable();
-                                //return '<div class="btn "><span class="si si-plus"></span></div>';
-                            }
+                                render: function (data, type, full, meta) {
+                                    //return '<a href="#/admin/chi-tiet-sp/' + data.maSp + '" target="_blank">Chỉnh sửa</a>';
+                                }
                          }
                      ]
                      ,
@@ -211,35 +233,21 @@
                  },
 
                  actions: {
-                     edit: {
-                         title: 'Chỉnh sửa nhà cung cấp',
-                         method: function (table) {
-                             var selected = table.rows({ selected: true });
-                             var selectedItems = selected.data();
-                             if (selectedItems.length > 0) {
-
-                                 table.row(selected.nodes()[0]).edit({ title: 'Chỉnh sửa nhà cung cấp' });
-                             }
-                             else {
-
-                             }
-                         }
-                     },
-                     remove: {
+                     huyPhieuNhap: {
                          title: '',
 
                          url: '',
                          method: function (table) {
                              if (table.row({ selected: true }).count() == 0) {
                                  swal({
-                                     title: "Chưa có sản phẩm nào được chọn!",
+                                     title: "Chưa có phiếu nhập nào được chọn!",
                                      type: 'warning',
                                      showCloseButton: true,
                                  });
                              }
                              else {
                                  swal({
-                                     title: 'Bạn có chắc chắn muốn xóa NCC này?',
+                                     title: 'Bạn có chắc chắn muốn hủy phiếu nhập này?',
                                      text: "",
                                      type: "warning",
                                      showCancelButton: true,
@@ -259,13 +267,13 @@
                                      }
 
                                      $.ajax({
-                                         url: "http://mamifood.dev/products/delete",
+                                         url: "http://mamifood.dev/stocks/cancle",
                                          type: "GET",
                                          dataType: 'json',
                                          data: { ids: ids.join(',') },
                                          crossDomain: true,
                                          success: function (resp) {
-                                             swal("Đã xóa!", "NCC đã xóa thành công", "success");
+                                             swal("Đã hủy!", "Hủy phiếu nhập thành công", "success");
                                              table.rows(table.rows({ selected: true }).nodes()).remove().draw();
                                          }.bind(this),
                                          error: function (resp) {
@@ -273,20 +281,16 @@
                                          }
                                      });
                                  });
-                             }                             
+                             }
+
+                             
                          }
 
                      },
-                     restore:{
-                         method: function (table) {
-                             swal("", "Thực hiện khôi phục nhà cung cấp!", "info");
-                         }
-                     },
                      addNew: {
-                         url: '',
-                         title: '',
                          method: function (table) {
-                             table.row.create();
+                             var win = window.open("/#/admin/tao-phieu-nhap", '_blank');
+                             win.focus();
                          }
                      }
                  }
@@ -317,9 +321,3 @@
         });
     </script>
 
-<script>
-            $(function () {
-                // Init page helpers (Table Tools helper)
-                App.initHelpers('table-tools');
-            });
-</script>

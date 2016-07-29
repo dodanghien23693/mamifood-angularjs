@@ -39,7 +39,7 @@ angular
             templateUrl: 'views/kho-tong/index.html'
         })
         .state('khoTong.danhMucSanPham', {
-            url: '/',
+            url: '/danh-muc-san-pham',
             templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
         })
         .state('khoTong.danhSachSanPham', {
@@ -48,18 +48,70 @@ angular
             controller: 'MainCtrl',
             authenticate: true
         })
+        .state('khoTong.chiTietSP', {
+            url: '/chi-tiet-sp/:id',
+            templateUrl: 'views/kho-tong/chi-tiet-sp.html'
+        })
          .state('khoTong.themMoiSanPham', {
              url: '/them-moi-san-pham',
-             templateUrl: 'views/kho-tong/danh-sach-san-pham.html',
+             templateUrl: 'views/kho-tong/them-moi-san-pham.html',
              controller: 'MainCtrl',
              authenticate: true
          })
+        .state('khoTong.themMoiNhomSanPham', {
+            url: '/them-moi-nhom-san-pham',
+            templateUrl: 'views/kho-tong/them-moi-nhom-san-pham.html',
+        })
+        .state('khoTong.danhSachPhieuNhap', {
+            url: '/danh-sach-phieu-nhap',
+            templateUrl: 'views/kho-tong/danh-sach-phieu-nhap.html'
+        })
       .state('khoTong.taoPhieuNhap', {
           url: '/tao-phieu-nhap',
           templateUrl: 'views/kho-tong/tao-phieu-nhap.html',
           controller: 'MainCtrl',
           authenticate: true
-      });
+      })
+    .state('khoTong.danhSachPhieuXuat', {
+        //url: '/',
+        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+    })
+    .state('khoTong.taoPhieuXuatHuy', {
+       // url: '/',
+        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+    })
+    .state('khoTong.baoCaoNhapXuatTon', {
+        //url: '/',
+        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+    })
+    .state('khoTong.danhSachKhoMini', {
+        //url: '/',
+        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+    })
+    .state('khoTong.themMoiKhoMini', {
+        //url: '/',
+        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+    })
+    .state('khoTong.danhSachNCC', {
+        url: '/danh-sach-ncc',
+        templateUrl: 'views/kho-tong/danh-sach-ncc.html'
+    })
+    .state('khoTong.themMoiNCC', {
+        url: '/them-moi-ncc',
+        templateUrl: 'views/kho-tong/them-moi-ncc.html'
+    })
+    .state('khoTong.chiTietNCC', {
+            url: '/chi-tiet-ncc/:id',
+            templateUrl: 'views/kho-tong/chi-tiet-ncc.html'
+    })
+    .state('khoTong.danhSachNguoiDung', {
+        //url: '/',
+        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+    })
+    .state('khoTong.themMoiNguoiDung', {
+        //url: '/',
+        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+    })
     if (window.history && window.history.pushState) {
         
         //$locationProvider.html5Mode({
