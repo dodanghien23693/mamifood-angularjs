@@ -84,10 +84,9 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Kho mini</label>
                                     <div class="col-sm-2">
-                                        <select class="form-control">
+                                        <select class="form-control js-select2-search">
                                             <option>Chọn kho mini</option>
-                                            <option>Kho 1</option>
-                                            <option>Kho 2</option>
+                                            <option ng-repeat="i in mamifoodService.getDSKho()" value="{{i.id}}">{{i.name}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -95,10 +94,9 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Nhà cung cấp</label>
                                     <div class="col-sm-2">
-                                        <select class="form-control">
+                                        <select class="form-control js-select2-search">
                                             <option>Chọn NCC</option>
-                                            <option>Kho 1</option>
-                                            <option>Kho 2</option>
+                                            <option ng-repeat="i in mamifoodService.getDSNhaCungCap()" value="{{i.id}}">{{i.name}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -142,7 +140,6 @@
                                 </div>
                                 <button class="btn  btn-info do-action">Thực hiện</button>
                                 <button class="btn btn-success" data-toggle="modal" data-target="#modal-large">Thêm sản phẩm</button>
-                                
                             </div>
                         </div>
                     </div>
@@ -338,8 +335,8 @@
             window.setTimeout(function () {
                 table.init();
             }.bind(this), 500);
-                // Init page helpers (BS Datepicker + BS Colorpicker + Select2 + Masked Input + Tags Inputs plugins)
-                //App.initHelpers(['select2']);
+            
+            $(".js-select2-search").select2({});
         });
 
         function addProducts() {

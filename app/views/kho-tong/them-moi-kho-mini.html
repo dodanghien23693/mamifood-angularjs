@@ -1,0 +1,335 @@
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #map {
+        height: 100%;
+    }
+
+    .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+    }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+    .pac-container {
+        font-family: Roboto;
+    }
+
+    #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+    }
+
+        #type-selector label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+    #target {
+        width: 345px;
+    }
+    .form-group{
+        margin-top:20px;
+    }
+</style>
+
+<div class="content content-narrow">
+    <!-- Forms Row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Bootstrap Forms Validation -->
+            <div class="block">
+                <div class="block-header">
+                    <h1 class="block-title text-center">Tạo mới kho mini</h1>
+                </div>
+                <div class="block-content block-content-large">
+                    <form class="js-validation-bootstrap form-horizontal">
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label">Mã kho<span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" name="code">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label">Tên kho<span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" name="name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Người quản lý</label>
+                            <div class="col-sm-8">
+                                <button class="btn btn-info" onClick="selectUser()">Chọn người quản lý</button>
+                                <input class="hidden" type="text" name="managerId" hidden>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label">Tỉnh/TP<span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <select class="form-control js-select2-search" name="tinhId" ng-model="tinhId">
+                                        <option>Chọn tỉnh</option>
+                                        <option ng-repeat="i in mamifoodService.getDSTinh()" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label">Quận/Huyện<span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <select class="form-control js-select2-search" name="quanHuyenId" ng-model="quanHuyenId">
+                                        <option>Chọn quận huyện</option>
+                                        <option ng-repeat="i in mamifoodService.getDSQuanHuyen()" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                         </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Địa chỉ<span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="address" readonly />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Tọa độ<span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="location" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Tọa độ<span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+
+                                    <!--<div class="block-content block-content-mini">
+                    <div class="js-form-search push-10">
+                        <div class="input-group input-group-lg">
+                            <input class="js-search-address form-control" type="text" placeholder="Search.. (eg: San Fransisco)">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+                                    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                                    <div id="js-map-search" style="height:400px"></div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-2 col-md-offset-5">
+                                    <div class="form-control btn btn-default" onClick="createKhoMini()">Thêm mới</div>
+                                </div>
+                            </div>
+</form>
+                </div>
+            </div>
+            <!-- Bootstrap Forms Validation -->
+        </div>
+
+    </div>
+    <!-- END Forms Row -->
+
+    <!-- Select User Modal -->
+    <div class="modal" id="chon-nguoi-dung-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="block block-themed block-transparent remove-margin-b">
+                    <div class="block-header bg-primary-dark">
+                        <ul class="block-options">
+                            <li>
+                                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">Danh sách nhân viên</h3>
+                    </div>
+                    <div class="block-content">
+                        <iframe src="/views/kho-tong/chon-nhan-vien.html" width="100%" height="420" style="border:0"></iframe>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <!--<button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Đóng</button>-->
+                    <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" onClick="doSelect()">Chọn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Modal -->
+
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgkWXwSl91eRCB3F0BFPQsYRSjxh8QO5o&libraries=places&callback=initAutocomplete" async defer></script>
+
+<!--<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>-->
+<!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+<!--<script src="/assets/js/plugins/gmapsjs/gmaps.min.js"></script>-->
+
+
+
+
+<script>
+    var map;
+
+    function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('js-map-search'), {
+            center: { lat: -33.8688, lng: 151.2195 },
+            zoom: 13,
+            mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function () {
+            searchBox.setBounds(map.getBounds());
+            
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function () {
+            debugger;
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+                return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function (place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+
+                // Create a marker for each place.
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location
+                }));
+
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.fitBounds(bounds);
+        });
+    }
+
+    //var initMap = function () {
+    //    map = new google.maps.Map(document.getElementById('js-map-search'), {
+    //        center: { lat: -34.397, lng: 150.644 },
+    //        zoom: 8
+    //    });
+    //}
+    //var initMapSearch = function () {
+    //    debugger;
+    //    // Init Map
+    //    var $mapSearch = new GMaps({
+    //        div: '#js-map-search',
+    //        lat: 20,
+    //        lng: 0,
+    //        zoom: 2,
+    //        scrollwheel: false
+    //    });
+
+    //    // When the search form is submitted
+    //    $('.js-form-search').on('submit', function () {
+    //        GMaps.geocode({
+    //            address: jQuery('.js-search-address').val().trim(),
+    //            callback: function ($results, $status) {
+    //                if (($status === 'OK') && $results) {
+    //                    var $latlng = $results[0].geometry.location;
+
+    //                    $mapSearch.removeMarkers();
+    //                    $mapSearch.addMarker({ lat: $latlng.lat(), lng: $latlng.lng() });
+    //                    $mapSearch.fitBounds($results[0].geometry.viewport);
+    //                } else {
+    //                    alert('Address not found!');
+    //                }
+    //            }
+    //        });
+
+    //        return false;
+    //    });
+    //};
+
+    function doSelect() {
+
+        //alert(JSON.stringify());
+        var items = window.frames[0].frameElement.contentWindow.getSelectedRows();
+        swal("", "Đã chọn " + items.length + " người dùng thành công!", "success");
+    }
+
+    function selectUser() {
+
+        $("#chon-nguoi-dung-modal").modal();
+        //swal("", "Thực hiện chọn người quản lý ncc", "info");
+    }
+
+    function createKhoMini() {
+        swal("", "Thực hiện tạo mới kho mini", "info");
+    }
+
+    $(document).ready(function () {
+        $(".js-select2-search").select2({});
+        //initMapSearch();
+    });
+
+    
+</script>

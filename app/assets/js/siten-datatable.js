@@ -89,6 +89,8 @@ var BaseTableDatatables = function (config) {
             minimumResultsForSearch: Infinity
         });
         
+        
+
         //window.table = table;
 
         return table;

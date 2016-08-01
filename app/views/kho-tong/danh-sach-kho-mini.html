@@ -1,0 +1,237 @@
+<!-- Page Header -->
+            <div class="content bg-gray-lighter">
+                <div class="row items-push">
+                    <div class="col-sm-7">
+                        <h1 class="page-heading">
+                            DataTables <small>Tables transformed with dynamic features. Powered by DataTables.</small>
+                        </h1>
+                    </div>
+                    <div class="col-sm-5 text-right hidden-xs">
+                        <ol class="breadcrumb push-10-t">
+                            <li>Tables</li>
+                            <li><a class="link-effect" href="">DataTables</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- END Page Header -->
+            <!-- Page Content -->
+            <div class="content">
+                <div class="block" id="danh-sach-sp">
+                    <div class="block-header">
+                        <h3 class="block-title">Danh sách kho mini</h3>
+                    </div>
+
+                    <div class="block-content">
+
+                        <div class="filter-region filter">
+
+							<div class="form-group">
+                                <label class="control-label col-sm-2">Tỉnh</label>
+                                <div class="col-sm-2">
+                                    <select class="form-control js-select2-search" name="tinhId" ng-model="danhSachKhoMini.tinhId">
+                                        <option>Chọn tỉnh</option>
+                                        <option ng-repeat="i in mamifoodService.getDSTinh()" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Quận huyện</label>
+                                <div class="col-sm-3">
+                                   
+                                    <select class="form-control js-select2-search" name="quanHuyenId" ng-model="danhSachKhoMini.quanHuyenId">
+                                        <option>Chọn quận huyện</option>
+                                        <option ng-repeat="i in mamifoodService.getDSQuanHuyen()" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <table class="table table-bordered table-striped js-dataTable-danh-sach-sp">
+                            <thead>
+                                <tr>
+                                    <th>Mã kho</th>
+                                    <th>Tên kho</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Người quản lý</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                        <div class="action-region">
+                            <div class="form-group">
+                                <!--<div class="col-sm-2 align-left">
+                                    <select class="form-control action-list">
+                                        <option value="taoHoaDon">Tạo hóa đơn</option>
+                                        <option value="edit">Sửa</option>
+                                        <option value="remove">Xóa</option>
+                                        <option value="showProduct">Hiển thị sản phẩm</option>
+                                        <option value="hideProduct">Ẩn sản phẩm</option>
+                                    </select>
+                                </div>
+                                <button class="btn  btn-info do-action">Thực hiện</button>-->
+                                <button class="btn btn-success action-button" action="addNew" >Thêm mới</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- END Dynamic Table Full -->
+
+            </div>
+            <!-- END Page Content -->
+
+
+    <script>
+        $(function () {
+            var config =
+             {
+                 tableContainer: "#danh-sach-kho-mini",
+                 //editorConfig: {
+                 //    ajax: "/jsons/sample-product-list.json",
+                 //    table: "#danh-sach-sp table",
+                 //    idSrc: 'maSp',
+                 //    fields: [
+                 //        {
+                 //            label: "Mã sản phẩm",
+                 //            name: "maSp"
+                 //        }, {
+                 //            label: "Tên sản phẩm",
+                 //            name: "tenSanPham"
+                 //        }, {
+                 //            label: "Danh mục",
+                 //            name: "danhMuc",
+                 //            type: "select",
+                 //            options: (function () {
+                 //                return ["TP tươi sống", "Gia vị", "TP chế biến", "Đồ uống", "Đồ ăn vặt", "Dụng cụ nhà bếp"];
+                 //            })()
+                 //        }, {
+                 //            label: "Hiển thị",
+                 //            name: "hienThi",
+                 //            type: "select",
+                 //            options: ["Hiển thị", "Ẩn"]
+                 //        }, {
+                 //            label: "Trạng thái",
+                 //            name: "trangThai",
+                 //            type: "select",
+                 //            options: ["Còn hàng", "Hết hàng"]
+                 //        }, {
+                 //            label: "Số lượng",
+                 //            name: "soLuong"
+                 //        }, {
+                 //            label: "Đơn vị",
+                 //            name: "donVi"
+                 //        },
+                 //        {
+                 //            label: "Giá bán",
+                 //            name: "giaBan"
+                 //        }
+                 //    ]
+                 //},
+
+                 datatableConfig: {
+                     dom: "frtlip",
+                     serverSide: true,
+                     "processing": true,
+                     "ajax": function (data, callback, settings) {
+                         var filter = {};
+                         $(config.tableContainer).find(".filter-region").find("select,input").each(function (index, item) {
+                             filter[$(item).attr('name')] = $(item).val();
+                         });
+
+                         var query = {
+                             start: settings._iDisplayStart,
+                             pageSize: settings._iDisplayLength,
+                             draw: settings.iDraw,
+                             filter: JSON.stringify(filter)
+                         };
+
+                         var sort = settings.aaSorting[0];
+                         var column = settings.aoColumns[sort[0]];
+                         if (column.data != null) {
+                             query.sortBy = column.data;
+                             query.order = sort[1];
+                         }
+
+                         $.ajax({
+                             type: "GET",
+                             dataType: 'json',
+                             data: query,
+                             url: "http://mamifood.dev/api/products",
+                             crossDomain: true
+                         })
+                         .done(function (data) {
+
+                             callback(data);
+                         }.bind(this))
+                         .fail(function (xhr, textStatus, errorThrown) {
+                             swal("Lỗi load dữ liệu", textStatus + ":" + xhr.responseText, 'error');
+                         });
+
+                     },
+                     lengthMenu: [[5, 10, 25, 50], [5, 10, 25, 50]],
+                     language: {
+                         "url": "assets/js/plugins/datatables/Languages/vietnamese.json"
+                     },
+                     columns: [
+                         //{
+                         //    data: null,
+                         //    defaultContent: '',
+                         //    orderable: false,
+                         //    className: 'select-checkbox',
+                             
+                         //},
+                         { data: "code" },
+                         { data: "name" },
+                         { data: "address" },
+                         { data: "manager.id" },
+                         {
+                            data: null, defaultContent: 'Zones',
+                            orderable: false,
+                            render: function (data, type, full, meta) {
+                                return '<a href="#/admin/danh-sach-zone?khoId=' + data.id + '" target="_blank">Zones</a>';
+                            }
+                             
+                         },
+                         {
+                             data: null, defaultContent: 'Chi tiết',
+                             orderable: false,
+                             render: function (data, type, full, meta) {
+                                 return '<a href="#/admin/chi-tiet-kho-mini/' + data.id + '" target="_blank">Chi tiết</a>';
+                             }
+
+                         }
+                     ]
+                     ,
+                     "order": [[0, 'asc']]
+                     //,
+                     //select: {
+                     //    style: 'multi',
+                     //    selector: 'td:first-child'
+                     //}
+                 },
+
+                 actions: {
+                     addNew: {
+                         method: function (table) {
+                             swal("", "Thực hiện thêm mới kho mini", "info");
+                         }
+                     }
+                 }
+             };
+           
+            var table = BaseTableDatatables(config);
+
+            window.setTimeout(function () {
+                table.init();
+            }.bind(this), 1000);
+
+
+            $(".js-select2-search").select2({});
+        });
+    </script>
+

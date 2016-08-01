@@ -1,0 +1,111 @@
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+<div class="content content-narrow">
+    <!-- Forms Row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Bootstrap Forms Validation -->
+            <div class="block">
+                <div class="block-header">
+                    <h1 class="block-title text-center">Tạo mới nhân viên</h1>
+                </div>
+                <div class="block-content block-content-large">
+                    <form class="form-horizontal js-validation-bootstrap">
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Email</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="email" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Mật khẩu</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="password" name="password" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Tên nhân viên</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="name" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Ngày sinh</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="date" name="birthday" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Địa chỉ</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="address" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Số điện thoại</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="phone" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Quyền</label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="true">Hoạt động
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="false">Bị ban
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Trạng thái</label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline" >
+                                    <input type="radio" name="role" value="1">Quản lý kho tổng
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="role" value="2">Quản lý kho mini
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="role" value="3">Shipper
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="role" value="4">CSKH
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button class="btn btn-sm btn-primary" onClick="createNhanvien()">Tạo</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Bootstrap Forms Validation -->
+        </div>
+
+    </div>
+    <!-- END Forms Row -->
+</div>
+
+
+
+<script>
+    function createNhanvien() {
+
+        swal("", "Thực hiện tạo mới nhân viên", "info");
+    }
+</script>

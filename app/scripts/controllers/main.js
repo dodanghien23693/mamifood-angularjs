@@ -8,10 +8,7 @@
  * Controller of the angularClientApp
  */
 angular.module('mamifood')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $http, mamifoodService) {
+
+      $scope.mamifoodService = mamifoodService;
   });

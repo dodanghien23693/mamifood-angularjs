@@ -1,15 +1,56 @@
 <!-- Page Content -->
 <div class="content">
     <!-- Dynamic Table Full -->
-    <div class="block">
-        <div class="block-header">
-            <h3 class="block-title">Quản lý danh mục sản phẩm</h3>
-        </div>
+    <div class="row">
+        <div class="block col-sm-6">
+            <div class="block-header">
+                <h3 class="block-title">Quản lý danh mục sản phẩm</h3>
+            </div>
 
-        <div class="block-content" >
-            <div id="tree"></div>
+
+            <div class="block-content">
+                <div id="tree"></div>
+            </div>
+        </div>
+        <div class="block col-sm-6">
+            <div class="block-header">
+                <h3 class="block-title">Thông tin</h3>
+            </div>
+            <div class="block-content">
+                <div class="form-horizontal" id="dm-info">
+                    <div class="form-group">
+                        <div class="animated fadeIn col-sm-8 col-sm-offset-2">
+                            <div class="img-container fx-img-zoom-in fx-opt-slide-down">
+                                <img class="img-responsive dm-img" src="" alt="">
+                                <div class="img-options">
+                                    <div class="img-options-content">
+                                        <h3 class="font-w400 text-white push-5"></h3>
+                                        <!--<h4 class="h6 font-w400 text-white-op push-15">Some Extra Info</h4>-->
+                                        <a class="btn btn-sm btn-default" href="javascript:changeImage(0)"><i class="fa fa-pencil"></i> Đổi</a>
+                                        <a class="btn btn-sm btn-default" href="javascript:deleteImage(0)"><i class="fa fa-times"></i> Xóa</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label ">Mã: </label> 
+                        <input type="text" class="form-control dm-code" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Tên: </label>
+                        <input type="text" class="form-control dm-name" />
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button class="btn btn-info form-control" onClick="updateDanhMuc()">Cập nhật</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
     <!-- END Dynamic Table Full -->
 
 </div>
@@ -18,22 +59,44 @@
 <link href="/assets/js/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" />
 <script src="/assets/js/plugins/jstree/dist/jstree.min.js"></script>
 <script>
+
+
+
+    function updateDanhMuc() {
+        swal("", "Cập nhật thông tin cho 1 danh mục", "info");
+    }
+
+    function changeImage(id) {
+        swal("", "Thực hiển đổi ảnh sản phẩm", "info");
+    }
+    function deleteImage(id) {
+        swal("", "Thực hiện xóa ảnh cho sản phẩm", "warning");
+    }
+
+
+    $.jstree.defaults.sort = function (a, b) {
+        debugger;
+        var nodeA = this.get_node(a).original;
+        var nodeB = this.get_node(b).original;
+        return (nodeA.id > nodeB.id) ? 1 : -1;
+    }
     function CreateTreeView(data) {
         TreeView = $('#tree')
         .jstree({
+            
             'core': {
-                
+
+
                 'data': function (node, cb) {
                     //return { 'id': node.id };
                     if (node.id === "#") {
-                        //debugger;
                         cb(data);
                     }
                     else {
                         alert("show folder");
                     }
                 },
-              
+
                 'check_callback': function (o, n, p, i, m) {
 
                     if (m && m.dnd && m.pos !== 'i') { return false; }
@@ -48,7 +111,7 @@
                 },
                 'themes': {
                     'responsive': false,
-                    'variant': 'small',
+                    'variant': 'large',
                     'stripes': true
                 }
             },
@@ -60,16 +123,43 @@
                     var tmp = $.jstree.defaults.contextmenu.items();
 
                     delete tmp.create.action;
+
                     tmp.rename.label = "Đổi tên";
+
+                    var oldRename = tmp.rename.action;
+                    tmp.rename.action = function (data) {
+
+                        swal("", "Thực hiện đổi tên sản phẩm", "info");
+                        window.setTimeout(function () {
+                            oldRename(data);
+                        },2000);
+                       
+                        
+                        
+                    }
+
+                    var oldRemove = tmp.remove.action;
                     tmp.remove.label = "Xóa";
-                    
+
+                    tmp.remove.action = function (data) {
+                        swal("", "Thực hiện xóa sản phẩm", "info");
+                        window.setTimeout(function () {
+                            oldRemove(data)
+                        }, 3000);
+                    }
+
                     tmp.ccp.label = "Thao tác";
+                    
 
                     tmp.create.label = "Tạo mới";
-                    tmp.create.action = function(data){
+
+                    tmp.create.action = function (data) {
+                        oldCreate(data);
+
                         var inst = $.jstree.reference(data.reference),
-                                   obj = inst.get_node(data.reference);
+                                  obj = inst.get_node(data.reference);
                         swal("", "Thực hiện tạo mới nhóm sản phẩm", "info");
+
                     }
 
                     //tmp.create.submenu = {
@@ -93,17 +183,6 @@
                     //        }
                     //    }
                     //};
-                    if (this.get_type(node) === "file") {
-                        delete tmp.create;
-                        tmp.CopyToRoot = {
-                            label: "Copy to Root",
-                            action: function (data) {
-
-                                var node = $.jstree.reference(data.reference).get_node(data.reference);
-
-                            }
-                        }
-                    }
 
                     return tmp;
                 }
@@ -121,7 +200,8 @@
 
         })
         .on('delete_node.jstree', function (e, data) {
-            swal("", "Thực hiện xóa danh mục", "info");
+
+            swal("", "Xóa danh mục thành công", "info");
         })
         .on('create_node.jstree', function (e, data) {
             $.get('?operation=create_node', { 'type': data.node.type, 'id': data.node.parent, 'text': data.node.text })
@@ -133,7 +213,7 @@
                 });
         })
         .on('rename_node.jstree', function (e, data) {
-            swal("", "Thực hiện đổi tên", "info");
+            swal("", "Đổi tên thành công", "info");
         })
         .on('move_node.jstree', function (e, data) {
 
@@ -145,7 +225,7 @@
         .on('paste.jstree', function (e, data) {
 
             if (data.mode == "copy_node") {
-                // CopyFile(data.node[0], data.parent);     
+                // CopyFile(data.node[0], data.parent);
                 swal("", "Thực hiện sao chép danh mục", "info");
             }
 
@@ -154,24 +234,44 @@
             }
         })
         .on('select_node.jstree', function (e, data) {
+            //debugger;
             //console.log("Select file: " + data.node);
-            var id = data.node.id;
-            var info = "";
-            info += "path: ";
-            for (var i = data.node.parents.length - 2; i >= 0; i--) {
-                info += $("#" + data.node.parents[i] + "_anchor").text() + "/";
-            }
-            info += data.node.text + "</br>";
+            var item = data.node.original;
+            $("#dm-info .dm-img").attr("src",item.img);
+            $("#dm-info .dm-code").val(item.id);
+            $("#dm-info .dm-name").val(item.text);
+            //var id = data.node.id;
+            //var info = "";
+            //info += "path: ";
+            //for (var i = data.node.parents.length - 2; i >= 0; i--) {
+            //    info += $("#" + data.node.parents[i] + "_anchor").text() + "/";
+            //}
+            //info += data.node.text + "</br>";
 
         })
         .on('changed.jstree', function (e, data) {
 
-        });
+        })
+        .on("redraw.jstree",function(e,data){
+            debugger;
+            var selector = '#tree';
+            var root = $(selector).jstree(true).get_node("root_anchor")
+            $(selector).jstree(true).sort(root, true);
+            $(selector).jstree(true).redraw_node(root, true);
+        })
     }
     $(document).ready(function () {
         
+        //TreeView.sort()
+        //$(selector).jstree(true).sort(root, true);
+        //$(selector).jstree(true).redraw_node(root, true);
+
         $.getJSON("/jsons/danh-muc-san-pham.json", function (data) {
             CreateTreeView(data);
+            
+
+        }).error(function (data) {
+            alert("lỗi");
         });
     });
 </script>

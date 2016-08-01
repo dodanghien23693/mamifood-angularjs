@@ -1,0 +1,309 @@
+﻿
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-focus">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <title>MamiFood</title>
+
+    <meta name="description" content="OneUI - Admin Dashboard Template & UI Framework created by pixelcave and published on Themeforest">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+    <!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    <link rel="shortcut icon" href="/assets/img/favicons/favicon.png">
+
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon-192x192.png" sizes="192x192">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon-180x180.png">
+    <!-- END Icons -->
+    <!-- Stylesheets -->
+    <!-- Web fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+
+    <link href="/assets/js/plugins/datatables/DataTables-1.10.12/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="/assets/js/plugins/datatables/Buttons-1.2.1/css/buttons.bootstrap.css" rel="stylesheet" />
+    <link href="/assets/js/plugins/datatables/Select-1.2.0/css/select.bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/js/plugins/editor-1.5.6/css/editor.bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/assets/js/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="/assets/js/plugins/select2/select2-bootstrap.css">
+
+    <!-- OneUI CSS framework -->
+    <link rel="stylesheet" id="css-main" href="/assets/css/oneui.min.css">
+    <link href="/assets/css/custom.css" rel="stylesheet" />
+    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+    <!-- <link rel="stylesheet" id="css-theme" href="/assets/css/themes/flat.min.css"> -->
+    <!-- END Stylesheets -->
+</head>
+<body>
+    <!-- Login Content -->
+ 
+
+            <!-- Page Header -->
+            <!--<div class="content bg-gray-lighter">
+                <div class="row items-push">
+                    <div class="col-sm-7">
+                        <h1 class="page-heading">
+                            DataTables <small>Tables transformed with dynamic features. Powered by DataTables.</small>
+                        </h1>
+                    </div>
+                    <div class="col-sm-5 text-right hidden-xs">
+                        <ol class="breadcrumb push-10-t">
+                            <li>Tables</li>
+                            <li><a class="link-effect" href="">DataTables</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>-->
+            <!-- END Page Header -->
+       
+    <!-- Page Content -->
+    <div class="content">
+        <!-- Dynamic Table Full -->
+        <div class="block" id="chon-nhan-vien">
+            <!--<div class="block-header">
+                <h3 class="block-title">Danh sách người dùng</h3>
+            </div>-->
+            <div class="block-content">
+                <div class="filter-region filter">
+
+                </div>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Mã NV</th>
+                            <th>Tên NV</th>
+                            <th>Ngày sinh</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Trạng thái</th>
+                            <th>Mã kho</th>
+                            <th>Quyền</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="action-region">
+                    <!--<div class="form-group">
+                        <div class="col-sm-2 align-left">
+                            <select class="form-control action-list">
+                                <option value="kickHoat">Kích hoạt người dùng</option>
+                                <option value="banNguoiDung">Ban người dùng</option>
+                            </select>
+                        </div>
+                        <button class="btn  btn-info do-action">Thực hiện</button>
+                        <button class="btn btn-success action-button" action="addNew">Thêm mới</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- END Dynamic Table Full -->
+    </div>
+    <!-- END Page Content -->
+
+
+    <!-- END Login Content -->
+
+    <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+    <script src="/assets/js/core/jquery.min.js"></script>
+    <script src="/assets/js/core/bootstrap.min.js"></script>
+    <script src="/assets/js/core/jquery.slimscroll.min.js"></script>
+    <script src="/assets/js/core/jquery.scrollLock.min.js"></script>
+    <script src="/assets/js/core/jquery.appear.min.js"></script>
+    <script src="/assets/js/core/jquery.countTo.min.js"></script>
+    <script src="/assets/js/core/jquery.placeholder.min.js"></script>
+    <script src="/assets/js/core/js.cookie.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="/assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+
+    <script src="/assets/js/plugins/datatables/DataTables-1.10.12/js/jquery.dataTables.js"></script>
+
+    <script src="/assets/js/plugins/datatables/DataTables-1.10.12/js/dataTables.bootstrap.js"></script>
+    <script src="/assets/js/plugins/editor-1.5.6/js/dataTables.editor.js"></script>
+
+    <script src="/assets/js/plugins/editor-1.5.6/js/editor.bootstrap.js"></script>
+
+    <script src="/assets/js/plugins/datatables/Buttons-1.2.1/js/dataTables.buttons.js"></script>
+    <script src="/assets/js/plugins/datatables/Select-1.2.0/js/dataTables.select.js"></script>
+
+    <script src="/assets/js/plugins/select2/select2.full.min.js"></script>
+
+    <script src="/assets/js/siten-datatable.js"></script>
+
+    <script>
+
+        
+        var dataTable;
+        $(function () {
+            var config =
+             {
+                 tableContainer: "#danh-sach-nguoi-dung",
+                 editorConfig: {
+                     ajax: "/api/danh-sach-nguoi-dung",
+                     table: "#danh-sach-nguoi-dung table",
+                     idSrc: 'id',
+                     fields: [
+                         {
+                             label: "Mã nhân viên",
+                             name: "id"
+                         }, {
+                             label: "Tên nhân viên",
+                             name: "name"
+                         }, {
+                             label: "Ngày sinh",
+                             name: "birthDay",
+                             type:'date'
+                             //type: "select",
+                             //options: (function () {
+                             //    return ["TP tươi sống", "Gia vị", "TP chế biến", "Đồ uống", "Đồ ăn vặt", "Dụng cụ nhà bếp"];
+                             //})()
+                         }, {
+                             label: "Địa chỉ",
+                             name: "address"
+                         }, {
+                             label: "Số điện thoại",
+                             name: "phone",
+                         }, {
+                             label: "Email",
+                             name: "email",
+                             type: 'email'
+                         }, {
+                             label: "Trạng thái",
+
+                             name: "status",
+                             type: 'select',
+                             options:['Hoạt động',"Bị ban"]
+                         },
+                         {
+                             label: "Quyền",
+                             name: "role"
+                         }
+                     ]
+                 },
+
+                 datatableConfig: {
+                     dom: "frtlip",
+                     serverSide: true,
+                     "processing": true,
+                     "ajax": function (data, callback, settings) {
+                         var filter = {};
+                         $(config.tableContainer).find(".filter-region").find("select,input").each(function (index, item) {
+                             filter[$(item).attr('name')] = $(item).val();
+                         });
+
+                         var query = {
+                             start: settings._iDisplayStart,
+                             pageSize: settings._iDisplayLength,
+                             draw: settings.iDraw,
+                             filter: JSON.stringify(filter)
+                         };
+
+                         var sort = settings.aaSorting[0];
+                         var column = settings.aoColumns[sort[0]];
+                         if (column.data != null) {
+                             query.sortBy = column.data;
+                             query.order = sort[1];
+                         }
+
+                         $.ajax({
+                             type: "GET",
+                             dataType: 'json',
+                             data: query,
+                             url: "http://mamifood.dev/api/stocks",
+                             crossDomain: true
+                         })
+                         .done(function (data) {
+
+                             callback(data);
+                         }.bind(this))
+                         .fail(function (xhr, textStatus, errorThrown) {
+                             swal("Lỗi load dữ liệu", textStatus +":"+ xhr.responseText, 'error');
+                             //alert(xhr.responseText);
+                             //alert(textStatus);
+                         });
+
+                     },
+                     lengthMenu: [[5, 10, 25, 50], [5, 10, 25, 50]],
+                     language: {
+                         "url": "assets/js/plugins/datatables/Languages/vietnamese.json"
+                     },
+                     columns: [
+                         {
+                             data: null,
+                             defaultContent: '',
+                             orderable: false,
+                             className: 'select-checkbox',
+
+                         },
+                         { data: "id" },
+                         { data: "name" },
+                         { data: "birthDay" },
+                         { data: "address" },
+                         { data: "phone" },
+                         { data: "email" },
+                         { data: "status" },
+                         { data: "maKho" },
+                         { data: "role" },
+                         //{
+                         //    data: null, defaultContent: 'chi tiết',
+                         //    orderable: false,
+                         //       render: function (data, type, full, meta) {
+                         //           //return '<a href="#/admin/chi-tiet-sp/' + data.maSp + '" target="_blank">Chỉnh sửa</a>';
+                         //       }
+                         //}
+                     ]
+                     ,
+                     "order": [[1, 'asc']],
+                     select: {
+                         style: 'multi',
+                         selector: 'td:first-child'
+                     }
+                 },
+
+                 actions: {
+
+                 }
+             };
+
+            var baseTable = BaseTableDatatables(
+                    config
+            );
+
+            window.setTimeout(function () {
+                dataTable = baseTable.init();
+            }.bind(this), 1000);
+
+        });
+
+        function getSelectedRows() {
+            return dataTable.rows({ "selected": true }).data();
+
+        }
+    </script>
+</body>
+</html>
+
+

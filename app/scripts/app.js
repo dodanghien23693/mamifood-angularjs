@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
-angular
-  .module('mamifood', [
+var mamifood = angular.module('mamifood', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -45,8 +44,7 @@ angular
         .state('khoTong.danhSachSanPham', {
             url: '/danh-sach-san-pham',
             templateUrl: 'views/kho-tong/danh-sach-san-pham.html',
-            controller: 'MainCtrl',
-            authenticate: true
+            controller: 'MainCtrl'
         })
         .state('khoTong.chiTietSP', {
             url: '/chi-tiet-sp/:id',
@@ -69,8 +67,7 @@ angular
       .state('khoTong.taoPhieuNhap', {
           url: '/tao-phieu-nhap',
           templateUrl: 'views/kho-tong/tao-phieu-nhap.html',
-          controller: 'MainCtrl',
-          authenticate: true
+          controller: 'MainCtrl'
       })
     .state('khoTong.danhSachPhieuXuat', {
         //url: '/',
@@ -85,12 +82,17 @@ angular
         //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
     })
     .state('khoTong.danhSachKhoMini', {
-        //url: '/',
-        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+        url: '/danh-sach-kho-mini',
+        templateUrl: 'views/kho-tong/danh-sach-kho-mini.html'
     })
     .state('khoTong.themMoiKhoMini', {
-        //url: '/',
-        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+        url: '/them-moi-kho-mini',
+        templateUrl: 'views/kho-tong/them-moi-kho-mini.html',
+        controller:'MainCtrl'
+    })
+    .state('khoTong.danhSachZone', {
+        url: '/danh-sach-zone',
+        templateUrl: 'views/kho-tong/danh-sach-zone.html'
     })
     .state('khoTong.danhSachNCC', {
         url: '/danh-sach-ncc',
@@ -105,12 +107,12 @@ angular
             templateUrl: 'views/kho-tong/chi-tiet-ncc.html'
     })
     .state('khoTong.danhSachNguoiDung', {
-        //url: '/',
-        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+        url: '/danh-sach-nguoi-dung',
+        templateUrl: 'views/kho-tong/danh-sach-nguoi-dung.html'
     })
     .state('khoTong.themMoiNguoiDung', {
-        //url: '/',
-        //templateUrl: 'views/kho-tong/danh-muc-san-pham.html'
+        url: '/them-moi-nguoi-dung',
+        templateUrl: 'views/kho-tong/them-moi-nguoi-dung.html'
     })
     if (window.history && window.history.pushState) {
         
@@ -150,5 +152,85 @@ angular
   //}
 
   );
+
+mamifood.factory('mamifoodService', function ($http) {
+
+    var DSTinh = null;
+    var flagDSTinh = false;
+
+    var DSQuanHuyen = null;
+    var flagDSQuanHuyen = false;
+
+    var DSKho = null;
+    var flagDSKho = false;
+    
+    var DSNhaCungCap = null;
+    var flagDSNhaCungCap = false;
+
+    return {
+        getDSTinh: function () {
+            if (DSTinh == null && !flagDSTinh) {
+                flagDSTinh = true;
+                $http.get("/jsons/ds-tinh.json")
+                  .then(function (response) {
+
+                      DSTinh = response.data;
+                      return DSTinh;
+                  });
+            }
+            else {
+                return DSTinh;
+            }
+
+        },
+        getDSQuanHuyen : function () {
+            if (DSQuanHuyen == null && !flagDSQuanHuyen) {
+                flagDSQuanHuyen = true;
+
+                $http.get("/jsons/ds-quan-huyen-hn.json")
+                  .then(function (response) {
+                      DSQuanHuyen = response.data;
+                      return DSQuanHuyen;
+                  });
+            }
+            else {
+                return DSQuanHuyen;
+            }
+
+        },
+        getDSKho : function () {
+            if (DSKho == null && !flagDSKho) {
+                flagDSKho = true;
+
+                $http.get("/jsons/ds-kho.json")
+                  .then(function (response) {
+                      DSKho = response.data;
+                      return DSKho;
+                  });
+            }
+            else {
+                return DSKho;
+            }
+
+        },
+        getDSNhaCungCap: function () {
+            if (DSNhaCungCap == null && !flagDSNhaCungCap) {
+                flagDSNhaCungCap = true;
+
+                $http.get("/jsons/ds-ncc.json")
+                  .then(function (response) {
+                      DSNhaCungCap = response.data;
+                      return DSNhaCungCap;
+                  });
+            }
+            else {
+                return DSNhaCungCap;
+            }
+
+        }
+    }
+});
+
+
 
 

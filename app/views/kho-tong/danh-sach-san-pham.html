@@ -55,6 +55,11 @@
                                         <option value="6">Kho 6</option>
                                         <option value="7">Kho 7</option>
                                     </select>
+
+                                    <select class="form-control js-select2-search" name="khoId" ng-model="danhSachSanPham.khoId" data-placeholder="Chọn kho">
+                                        <option></option>
+                                        <option ng-repeat="i in getDSKho()" value="{{i.id}}">{{i.name}}</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -106,7 +111,7 @@
                                     </select>
                                 </div>
                                 <button class="btn  btn-info do-action">Thực hiện</button>
-                                <button class="btn btn-success add-new">Thêm mới</button>
+                                <button class="btn btn-success action-button" action="addNew">Thêm mới</button>
                             </div>
                         </div>
 
@@ -321,11 +326,13 @@
                          }
 
                      },
-                     create: {
-                         url: '',
-                         title: '',
+                     addNew: {
                          method: function (table) {
-                             table.row.create();
+
+                             //table.row.create();
+
+                             var win = window.open("/#/admin/them-moi-san-pham", '_blank');
+                             //win.focus();
                          }
                      }
                  }

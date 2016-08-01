@@ -13,53 +13,53 @@
                     <h1 class="block-title text-center">Tạo mới nhà cung cấp</h1>
                 </div>
                 <div class="block-content block-content-large">
-                    <form class="js-validation-bootstrap form-horizontal" action="" method="post">
+                    <form class="js-validation-bootstrap form-horizontal">
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="managerAccount">TK quản lý</label>
+                            <label class="col-md-4 control-label">TK quản lý</label>
                             <div class="col-md-8">
-                                <div class="btn btn-primary">Chọn</div>
+                                <button class="btn btn-primary" onClick="selectUser()">Chọn</button>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="name">Tên NCC</label>
+                            <label class="col-md-4 control-label" >Tên NCC</label>
                             <div class="col-md-8">
-                                <input class="form-control" type="text" id="name" name="name" placeholder="">
+                                <input class="form-control" type="text" name="name" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="nguoiDaiDien">Người đại diện</label>
+                            <label class="col-md-4 control-label" >Người đại diện</label>
                             <div class="col-md-8">
-                                <input class="form-control" type="text" id="nguoiDaiDien" name="nguoiDaiDien" placeholder="">
+                                <input class="form-control" type="text" name="nguoiDaiDien" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="address">Địa chỉ<span class="text-danger"></span></label>
+                            <label class="col-md-4 control-label" >Địa chỉ<span class="text-danger"></span></label>
                             <div class="col-md-8">
-                                <input class="form-control" type="text" id="address" name="address" />
+                                <input class="form-control" type="text" name="address" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="phone">Số điện thoại</label>
+                            <label class="col-md-4 control-label" >Số điện thoại</label>
                             <div class="col-md-8">
-                                <input class="form-control" id="phone" name="phone" />
+                                <input class="form-control" name="phone" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="email">Email</label>
+                            <label class="col-md-4 control-label" >Email</label>
                             <div class="col-md-8">
-                                <input class="form-control" type="email" id="email" name="email" placeholder="">
+                                <input class="form-control" type="email" name="email" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button class="btn btn-sm btn-primary" type="submit">Tạo mới NCC</button>
+                                <button class="btn btn-sm btn-primary" onClick="createNCC()">Tạo mới NCC</button>
                             </div>
                         </div>
                     </form>
@@ -70,10 +70,12 @@
 
     </div>
     <!-- END Forms Row -->
-    <!-- Terms Modal -->
-    <div class="modal fade" id="modal-terms" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-popin">
+
+    <!-- Select User Modal -->
+    <div class="modal" id="chon-nguoi-dung-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
+
                 <div class="block block-themed block-transparent remove-margin-b">
                     <div class="block-header bg-primary-dark">
                         <ul class="block-options">
@@ -81,25 +83,41 @@
                                 <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
                             </li>
                         </ul>
-                        <h3 class="block-title">Terms &amp; Conditions</h3>
+                        <h3 class="block-title">Danh sách nhân viên</h3>
                     </div>
                     <div class="block-content">
-                        <h4 class="push-10">1. <strong>General</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.</p>
-                        <h4 class="push-10">2. <strong>Account</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.</p>
-                        <h4 class="push-10">3. <strong>Service</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.</p>
-                        <h4 class="push-10">4. <strong>Payments</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor.</p>
+                        <iframe src="/views/kho-tong/chon-nhan-vien.html" width="100%" height="420" style="border:0"></iframe>
                     </div>
                 </div>
+
                 <div class="modal-footer">
-                    <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button>
+                    <!--<button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Đóng</button>-->
+                    <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" onClick="doSelect()">Chọn</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END Terms Modal -->
+    <!-- END Modal -->
+
 </div>
+
+<script>
+
+    function doSelect() {
+
+        //alert(JSON.stringify());
+        var items = window.frames[0].frameElement.contentWindow.getSelectedRows();
+        swal("", "Đã chọn " + items.length + " người dùng thành công!", "success");
+    }
+
+    function selectUser() {
+
+        $("#chon-nguoi-dung-modal").modal();
+        //swal("", "Thực hiện chọn người quản lý ncc", "info");
+    }
+
+    function createNCC() {
+        swal("", "Thực hiện tạo mới ncc", "info");
+    }
+
+</script>
