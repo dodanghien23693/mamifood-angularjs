@@ -45,20 +45,10 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-1">Kho</label>
                                 <div class="col-sm-2">
-                                    <select name="khoId" class="js-select2 form-control" data-placeholder="Chọn kho">
-                                        <option value="-1">Tất cả</option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
-                                        <option value="1">kho 1</option>
-                                        <option value="2">Kho 2</option>
-                                        <option value="3">Kho 3</option>
-                                        <option value="4">Kho 4</option>
-                                        <option value="5">Kho 5</option>
-                                        <option value="6">Kho 6</option>
-                                        <option value="7">Kho 7</option>
-                                    </select>
 
                                     <select class="form-control js-select2-search" name="khoId" ng-model="danhSachSanPham.khoId" data-placeholder="Chọn kho">
                                         <option></option>
-                                        <option ng-repeat="i in getDSKho()" value="{{i.id}}">{{i.name}}</option>
+                                        <option ng-repeat="i in mamifoodService.getDSKho()" value="{{i.id}}">{{i.name}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -74,15 +64,10 @@
                                     </select>
                                 </div>
                             </div>
-
-
-
-
-
                         </div>
 
                         <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
-                        <table class="table table-bordered table-striped js-dataTable-danh-sach-sp">
+                        <table class="display responsive no-wrap table table-bordered table-striped js-dataTable-danh-sach-sp" style="width:100%">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -121,7 +106,6 @@
 
             </div>
             <!-- END Page Content -->
-
 
     <script>
         $(function () {
@@ -220,6 +204,7 @@
                              defaultContent: '',
                              orderable: false,
                              className: 'select-checkbox',
+                             width: "10px"
                              
                          },
                          { data: "maSp" },
@@ -237,10 +222,11 @@
                          { data: "giaBan" },
                          {
                              data: null, defaultContent: 'chi tiết',
+                             width:"50px",
                              orderable: false,
-                            render: function (data, type, full, meta) {
+                                render: function (data, type, full, meta) {
 
-                                return '<a href="#/admin/chi-tiet-sp/' + data.maSp + '" target="_blank">Chi tiết</a>';
+                                return '<a href="#/admin/chi-tiet-san-pham/' + data.maSp + '" target="_blank">Chi tiết</a>';
 
                                 //return getDetailTable();
                                 //return '<div class="btn "><span class="si si-plus"></span></div>';

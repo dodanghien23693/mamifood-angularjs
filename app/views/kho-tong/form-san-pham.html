@@ -1,0 +1,234 @@
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+
+
+            <div class="block">
+                <div class="block-header">
+                    <h3 class="header-content  text-center">
+                    <span ng-if="isCreate"> Thêm mới sản phẩm</span>
+                    <span ng-if="isEdit">Chi tiết sản phẩm</span>
+                    </h3>
+                </div>
+                <div class="block-content block-content-large">
+                    <form class="js-validation-them-moi-san-pham form-horizontal" action="" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="code">Tên sản phẩm<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="name" ng-model="product.name"  class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="categoryId">Danh mục<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <select name="categoryId" class="form-control" ng-model="product.categoryId">
+                                            <option>
+                                                Chọn danh mục sản phẩm
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="unit">Đơn vị<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="unit" ng-model="product.unit" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="code">Mã sản phẩm<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="code" ng-model="product.code" placeholder="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="price">Đơn giá bán<span class="text-danger">*</span></label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="price" ng-model="price" placeholder="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="">Thang đo</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" type="text" name="measure" ng-model="product.measure" placeholder="">
+                                            <option value="Khối lượng">Khối lượng</option>
+                                            <option value="Dung tích">Dung tích</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="">Khối lượng lý thuyết</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="khoiLuong" ng-model="khoiLuong" placeholder="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" >Đơn vị thang đo</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text"  placeholder="" />
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-sm-6">
+
+
+                                <!--<div class="row items-push">
+                                    <div class="col-sm-6 animated fadeIn">
+                                        <div class="img-container fx-img-zoom-in fx-opt-slide-down">
+                                            <img class="img-responsive" src="assets/img/photos/photo13.jpg" alt="">
+                                            <div class="img-options">
+                                                <div class="img-options-content">
+                                                    <h3 class="font-w400 text-white push-5">Ảnh 1</h3>
+                                                    <a class="btn btn-sm btn-default" href="javascript:editImage(0)"><i class="fa fa-pencil"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-default" href="javascript:deleteImage(0)"><i class="fa fa-times"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 animated fadeIn">
+                                        <div class="img-container fx-img-zoom-in fx-opt-slide-down">
+                                            <img class="img-responsive" src="assets/img/photos/photo13.jpg" alt="">
+                                            <div class="img-options">
+                                                <div class="img-options-content">
+                                                    <h3 class="font-w400 text-white push-5">Ảnh 2</h3>
+                                                    <a class="btn btn-sm btn-default" href="javascript:editImage(1)"><i class="fa fa-pencil"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-default" href="javascript:deleteImage(1)"><i class="fa fa-times"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <h2 class="content-heading">Thêm ảnh</h2>
+                                    <div class="block">
+                                        <div class="block-content block-content-full">
+                                            <div class="dropzone">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                    -->
+
+                                <input id="images" name="images[]" type="file" class="file-loading" accept="image/*" multiple>
+
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="form-group">
+                                        <label class="css-input css-checkbox css-checkbox-primary">
+                                            <input type="checkbox" name="hidden" ng-model="product.hidden"/><span></span> Hiển thị sản phẩm
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="css-input css-checkbox css-checkbox-primary">
+                                            <input type="checkbox" name="saiKhac" checked ng-model="product.saiKhac" /><span></span> Tính tiền trên sai khác thực tế
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12" ng-if="isCreate">
+                                <div class="form-group">
+                                    <button class="btn btn-sm btn-primary col-sm-1 col-sm-offset-5">Tạo</button>
+                                    <button class="btn btn-sm btn-default col-sm-1" style="margin-left:5px">Hủy</button>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12" ng-if="isEdit">
+                                <div class="form-group">
+                                    <button class="btn btn-sm btn-primary col-sm-1 col-sm-offset-5">Lưu</button>
+                                    <button class="btn btn-sm btn-danger col-sm-1" style="margin-left:5px">Xóa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Bootstrap Forms Validation -->
+
+
+<link href="../../../bower_components/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+<script src="../../../bower_components/bootstrap-fileinput/js/fileinput.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#images").fileinput({
+            uploadUrl: "/file-upload-batch/2",
+            autoReplace: true,
+            maxFileCount: 5,
+            allowedFileExtensions: ["jpg", "png", "gif"],
+            initialPreview: [
+                "<img src='https://www.ricoh.com/r_dc/r/r8/img/sample_10.jpg' width='150' class='file-preview-image' >",
+                "<img src='http://media.doisongphapluat.com/thumb_x670x/182/2014/7/17/thit%20bo6.jpg' class='file-preview-image' width='150' >",
+            ],
+        });
+
+
+        $('.js-validation-them-moi-san-pham').validate({
+            errorClass: 'help-block animated fadeInDown',
+            errorElement: 'div',
+            errorPlacement: function (error, e) {
+                jQuery(e).parents('.form-group > div').append(error);
+            },
+            highlight: function (e) {
+                jQuery(e).closest('.form-group').removeClass('has-error').addClass('has-error');
+                jQuery(e).closest('.help-block').remove();
+            },
+            success: function (e) {
+                jQuery(e).closest('.form-group').removeClass('has-error');
+                jQuery(e).closest('.help-block').remove();
+            },
+            rules: {
+                'name': {
+                    required: true,
+                    minlength: 3
+                },
+                'categoryId': {
+                    required: true
+                },
+                'unit': {
+                    required: true
+                },
+                'code': {
+                    required: true,
+                    minlength: 7,
+                    maxlength: 7
+                },
+                'price': {
+                    required: true
+                },
+            },
+            messages: {
+                'name': {
+                    required: 'Chưa nhập tên sản phẩm'
+                },
+                'categoryId': 'Please enter a valid email address',
+                'unit': {
+                    required: 'Chưa nhập đơn vị',
+                },
+                'code': {
+                    required: 'Vui lòng nhập mã sản phẩm',
+                    minlength: 'Mã sản phẩm cần nhập đủ 7 kỹ tự'
+                },
+                'price': 'What can we do to become better?'
+            }
+        });
+    });
+</script>

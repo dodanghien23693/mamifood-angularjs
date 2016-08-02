@@ -2,10 +2,11 @@
 <div class="content content-narrow">
     <div class="row">
         <div class="col-sm-12">
-            <div ng-init="createMode()"></div>
+            <div ng-init="editMode()"></div>
+            Edit sản phẩm: {{productId}}
             <div ng-include="'views/kho-tong/form-san-pham.html'"></div>
+            <div ng-include="'views/kho-tong/form-truy-van-chi-tiet-san-pham.html'"></div>
         </div>
     </div>
 
 </div>
-

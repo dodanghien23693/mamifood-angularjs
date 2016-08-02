@@ -19,19 +19,20 @@
             <div class="block-content">
                 <div class="form-horizontal" id="dm-info">
                     <div class="form-group">
-                        <div class="animated fadeIn col-sm-8 col-sm-offset-2">
+                        <!--<div class="animated fadeIn col-sm-8 col-sm-offset-2">
                             <div class="img-container fx-img-zoom-in fx-opt-slide-down">
                                 <img class="img-responsive dm-img" src="" alt="">
                                 <div class="img-options">
                                     <div class="img-options-content">
                                         <h3 class="font-w400 text-white push-5"></h3>
-                                        <!--<h4 class="h6 font-w400 text-white-op push-15">Some Extra Info</h4>-->
                                         <a class="btn btn-sm btn-default" href="javascript:changeImage(0)"><i class="fa fa-pencil"></i> Đổi</a>
                                         <a class="btn btn-sm btn-default" href="javascript:deleteImage(0)"><i class="fa fa-times"></i> Xóa</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
+
+                        <input id="image" name="image" type="file" class="file-loading" accept="image/*" >
                     </div>
                     <div class="form-group">
                         <label class="control-label ">Mã: </label> 
@@ -43,7 +44,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <button class="btn btn-info form-control" onClick="updateDanhMuc()">Cập nhật</button>
+                        <div class="btn btn-default form-control" onClick="updateDanhMuc()">Cập nhật</div>
                     </div>
                 </div>
             </div>
@@ -58,21 +59,14 @@
 
 <link href="/assets/js/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" />
 <script src="/assets/js/plugins/jstree/dist/jstree.min.js"></script>
+
+<link href="../../../bower_components/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+<script src="../../../bower_components/bootstrap-fileinput/js/fileinput.min.js"></script>
 <script>
-
-
 
     function updateDanhMuc() {
         swal("", "Cập nhật thông tin cho 1 danh mục", "info");
     }
-
-    function changeImage(id) {
-        swal("", "Thực hiển đổi ảnh sản phẩm", "info");
-    }
-    function deleteImage(id) {
-        swal("", "Thực hiện xóa ảnh cho sản phẩm", "warning");
-    }
-
 
     $.jstree.defaults.sort = function (a, b) {
         debugger;
@@ -196,7 +190,7 @@
                     return name + ' ' + counter;
                 }
             },
-            'plugins': ['dnd', 'sort', 'types', 'contextmenu', 'unique', 'wholerow']
+            'plugins': [ 'sort', 'types', 'contextmenu', 'unique', 'wholerow']
 
         })
         .on('delete_node.jstree', function (e, data) {
@@ -237,39 +231,61 @@
             //debugger;
             //console.log("Select file: " + data.node);
             var item = data.node.original;
-            $("#dm-info .dm-img").attr("src",item.img);
+
+            //$("#dm-info .dm-img").attr("src", item.img);
+            initFileInput(item.img);
+
             $("#dm-info .dm-code").val(item.id);
             $("#dm-info .dm-name").val(item.text);
-            //var id = data.node.id;
-            //var info = "";
-            //info += "path: ";
-            //for (var i = data.node.parents.length - 2; i >= 0; i--) {
-            //    info += $("#" + data.node.parents[i] + "_anchor").text() + "/";
-            //}
-            //info += data.node.text + "</br>";
 
         })
         .on('changed.jstree', function (e, data) {
 
         })
         .on("redraw.jstree",function(e,data){
-            debugger;
             var selector = '#tree';
             var root = $(selector).jstree(true).get_node("root_anchor")
             $(selector).jstree(true).sort(root, true);
             $(selector).jstree(true).redraw_node(root, true);
         })
     }
-    $(document).ready(function () {
+
+    function initFileInput(image) {
+
+        var arrayPreview = [];
+
+        if (image != undefined) {
+             arrayPreview.push("<img src='"+image+"' width='150' class='file-preview-image' >")
+        }
         
-        //TreeView.sort()
-        //$(selector).jstree(true).sort(root, true);
-        //$(selector).jstree(true).redraw_node(root, true);
+        $("#image").fileinput('destroy');
+
+        $("#image").fileinput({
+            uploadUrl: "/file-upload-batch/2",
+            autoReplace: true,
+            maxFileCount: 1,
+            allowedFileExtensions: ["jpg", "png", "gif"],
+            initialPreview: arrayPreview,
+            initialPreviewConfig: [
+                {
+                    //caption: 'desert.jpg',
+                    width: '500px',
+                    url: 'deleteimage',
+                    key: 100,
+                    extra: {id: 100}
+                }
+            ],
+            browseLabel: "Chọn",
+            removeLabel: "Xóa",
+        });
+    }
+
+    $(document).ready(function () {
+           
 
         $.getJSON("/jsons/danh-muc-san-pham.json", function (data) {
             CreateTreeView(data);
-            
-
+            initFileInput();
         }).error(function (data) {
             alert("lỗi");
         });

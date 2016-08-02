@@ -46,14 +46,15 @@ var mamifood = angular.module('mamifood', [
             templateUrl: 'views/kho-tong/danh-sach-san-pham.html',
             controller: 'MainCtrl'
         })
-        .state('khoTong.chiTietSP', {
-            url: '/chi-tiet-sp/:id',
-            templateUrl: 'views/kho-tong/chi-tiet-sp.html'
+        .state('khoTong.chiTietSanPham', {
+            url: '/chi-tiet-san-pham/:id',
+            templateUrl: 'views/kho-tong/chi-tiet-san-pham.html',
+            controller: 'ProductCtrl'
         })
          .state('khoTong.themMoiSanPham', {
              url: '/them-moi-san-pham',
              templateUrl: 'views/kho-tong/them-moi-san-pham.html',
-             controller: 'MainCtrl',
+             controller: 'ProductCtrl',
              authenticate: true
          })
         .state('khoTong.themMoiNhomSanPham', {
@@ -67,7 +68,7 @@ var mamifood = angular.module('mamifood', [
       .state('khoTong.taoPhieuNhap', {
           url: '/tao-phieu-nhap',
           templateUrl: 'views/kho-tong/tao-phieu-nhap.html',
-          controller: 'MainCtrl'
+          controller: 'PhieuNhapCtrl'
       })
     .state('khoTong.danhSachPhieuXuat', {
         //url: '/',
@@ -100,11 +101,13 @@ var mamifood = angular.module('mamifood', [
     })
     .state('khoTong.themMoiNCC', {
         url: '/them-moi-ncc',
-        templateUrl: 'views/kho-tong/them-moi-ncc.html'
+        templateUrl: 'views/kho-tong/them-moi-ncc.html',
+        controller:"NCCCtrl"
     })
     .state('khoTong.chiTietNCC', {
             url: '/chi-tiet-ncc/:id',
-            templateUrl: 'views/kho-tong/chi-tiet-ncc.html'
+            templateUrl: 'views/kho-tong/chi-tiet-ncc.html',
+            controller: "NCCCtrl"
     })
     .state('khoTong.danhSachNguoiDung', {
         url: '/danh-sach-nguoi-dung',
@@ -124,32 +127,6 @@ var mamifood = angular.module('mamifood', [
     
 }
 
-  //.config(function ($routeProvider) {
-  //  $routeProvider
-  //    .when('/', {
-  //      templateUrl: 'views/danh-sach-sp.html',
-  //      controller: 'MainCtrl',
-  //      controllerAs: 'main'
-  //    })
-  //    .when('/tao-phieu-nhap', {
-  //      templateUrl: 'views/tao-phieu-nhap.html',
-  //      controller: 'MainCtrl',
-  //      controllerAs: 'main'
-  //    })
-  //    .when('/danh-sach-sp', {
-  //      templateUrl: 'views/danh-sach-sp.html',
-  //      controller: 'MainCtrl',
-  //      controllerAs: 'main'
-  //    })
-  //    .when('/about', {
-  //      templateUrl: 'views/about.html',
-  //      controller: 'AboutCtrl',
-  //      controllerAs: 'about'
-  //    })
-  //    .otherwise({
-  //      redirectTo: '/'
-  //    });
-  //}
 
   );
 

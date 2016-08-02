@@ -1,0 +1,126 @@
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+
+    <div class="block">
+                <div class="block-header">
+                    <h1 class="block-title text-center">
+                         <span ng-if="isCreate">Tạo mới nhà cung cấp</span>
+                         <span ng-if="isEdit">chỉnh sửa cung cấp</span>
+                    </h1>
+                </div>
+                <div class="block-content block-content-large">
+                    <form class="js-validation-bootstrap form-horizontal">
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">TK quản lý</label>
+                            <div class="col-md-8">
+                                <button class="btn btn-primary" onClick="selectUser()">Chọn</button>
+                            </div>
+                            <label type="text" class="control-label label label-info"   ng-bind="NCC.managerId" ></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >Tên NCC</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="name" ng-model="NCC.name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >Người đại diện</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="nguoiDaiDien"  ng-model="NCC.nguoiDaiDien">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >Địa chỉ<span class="text-danger"></span></label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="address"  ng-model="NCC.address"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >Số điện thoại</label>
+                            <div class="col-md-8">
+                                <input class="form-control" name="phone"  ng-model="NCC.phone"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >Email</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="email" name="email"  ng-model="NCC.email">
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-if="isCreate">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button class="btn btn-sm btn-primary" onClick="createNCC()">Tạo mới NCC</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-if="isEdit">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button class="btn btn-sm btn-primary" onClick="EditNCC()">Lưu chỉnh sửa</button>
+                                <button class="btn btn-sm btn-danger" onClick="DeleteNCC()">Xóa</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+         
+
+
+    <!-- Select User Modal -->
+    <div class="modal" id="chon-nguoi-dung-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="block block-themed block-transparent remove-margin-b">
+                    <div class="block-header bg-primary-dark">
+                        <ul class="block-options">
+                            <li>
+                                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">Danh sách nhân viên</h3>
+                    </div>
+                    <div class="block-content">
+                        <iframe src="/views/kho-tong/chon-nhan-vien.html" width="100%" height="420" style="border:0"></iframe>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <!--<button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Đóng</button>-->
+                    <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" onClick="doSelect()">Chọn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Modal -->
+
+
+<script>
+
+    function doSelect() {
+
+        //alert(JSON.stringify());
+        var items = window.frames[0].frameElement.contentWindow.getSelectedRows();
+        swal("", "Đã chọn " + items.length + " người dùng thành công!", "success");
+    }
+
+    function selectUser() {
+
+        $("#chon-nguoi-dung-modal").modal();
+        //swal("", "Thực hiện chọn người quản lý ncc", "info");
+    }
+
+    function createNCC() {
+        swal("", "Thực hiện tạo mới ncc", "info");
+    }
+
+</script>

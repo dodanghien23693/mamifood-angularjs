@@ -15,6 +15,7 @@ var BaseTableDatatables = function (config) {
         
         if (config.editorConfig != undefined) {
             editor = new $.fn.dataTable.Editor(config.editorConfig);
+            config.editor = editor;
         }
         
         // Activate an inline edit on click of a table cell
@@ -372,7 +373,7 @@ var BaseTableDatatables = function (config) {
     }
 
     return {
-        
+        editor: editor,
         init: function () {
             bsDataTables();
             var table = initProductList(config.tableContainer + " table");

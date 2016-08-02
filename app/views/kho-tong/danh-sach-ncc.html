@@ -38,17 +38,11 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th class="text-center" style="width: 70px;">
-                                        <label class="css-input css-checkbox css-checkbox-primary remove-margin-t remove-margin-b">
-                                            <input type="checkbox" id="check-all" name="check-all"><span></span>
-                                        </label>
-                                    </th>
                                     <th>Mã NCC</th>
                                     <th>Tên NCC</th>
                                     <th>Trạng thái</th>
                                     <th>Người đại diện</th>
                                     <th>SĐT NĐD</th>
-                                    
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
                                     <th></th>
@@ -171,7 +165,8 @@
                              data: null,
                              defaultContent: '',
                              orderable: false,
-                             className: 'select-checkbox', 
+                             className: 'select-checkbox',
+                             width: "10px"
                          },
                          { data: "code" },
                          { data: "name" },
@@ -194,6 +189,7 @@
                          {
                              data: null, defaultContent: 'chi tiết',
                              orderable: false,
+                             width:"50px",
                              render: function (data, type, full, meta) {
 
                                 return '<a href="#/admin/chi-tiet-ncc/' + data.code + '" target="_blank">Chi tiết</a>';
@@ -318,8 +314,8 @@
     </script>
 
 <script>
-            $(function () {
-                // Init page helpers (Table Tools helper)
-                App.initHelpers('table-tools');
-            });
+    $(function () {
+        // Init page helpers (Table Tools helper)
+        App.initHelpers('table-tools');
+    });
 </script>

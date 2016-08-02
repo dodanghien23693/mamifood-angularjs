@@ -1,0 +1,82 @@
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+
+
+<div class="block">
+    <div class="block-header">
+        <h3 class="header-content text-center">Truy vấn chi tiết sản phẩm</h3>
+    </div>
+    <div class="block-content block-content-large">
+        <div class="filter-region filter">
+            <div class="form-group">
+                <label class="control-label col-sm-1">Kho</label>
+                <div class="col-sm-2">
+                    <select name="khoId" class="js-select2 form-control" data-placeholder="Chọn kho">
+                        <option value="-1">Tất cả</option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
+                        <option value="1">kho 1</option>
+                        <option value="2">Kho 2</option>
+                        <option value="3">Kho 3</option>
+                        <option value="4">Kho 4</option>
+                        <option value="5">Kho 5</option>
+                        <option value="6">Kho 6</option>
+                        <option value="7">Kho 7</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="btn btn-info col-sm-1">Truy vấn</div>
+            </div>
+        </div>
+        <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Serial</th>
+                    <th>Số lượng</th>
+                    <th>Hạn sử dụng</th>
+                    <th>Khối lượng/Dung tích</th>
+                    <th>Ngày nhập</th>
+                    <th>Phiếu nhập</th>
+                    <th>Nhà cung cấp</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="action-region">
+            <div class="form-group">
+                <div class="col-sm-2 align-left">
+                    <select class="form-control action-list">
+                        <option value="huyPhieuNhap">Hủy phiếu nhập</option>
+                    </select>
+                </div>
+                <button class="btn  btn-info do-action">Thực hiện</button>
+                <button class="btn btn-success action-button" action="addNew">Thêm mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+   
+<div class="content content-narrow">
+    <div class="row">
+        <div class="col-sm-12">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function editImage(id) {
+        swal("", "Thực hiển chỉnh sửa ảnh sản phẩm", "info");
+    }
+    function deleteImage(id) {
+        swal("", "Thực hiện xóa ảnh cho sản phẩm", "info");
+    }
+
+    $(document).ready(function () {
+
+
+    });
+</script>
